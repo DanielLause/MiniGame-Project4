@@ -17,7 +17,7 @@ public class ShootDirection : MonoBehaviour {
         Physics.Raycast(transform.position, transform.forward , out hit);
         //Target = hit.transform.position;
 
-        //if (hit.transform == null || hit.transform.gameObject.tag == "Player")
+        //if (hit.transform == null || hit.transform.gameObject.tag == "BulletSpawn")
         //{
         //    return;
         //}

@@ -3,18 +3,18 @@ using System.Collections;
 
 public class CheckPosition : MonoBehaviour {
 
-    //Transform player;
+    Transform player;
     Health health;
     void Awake()
     {
-        //player = transform.Find("Player");
-        health = transform.GetComponent<Health>();
+        player = transform.Find("BulletSpawn");
+        health = player.GetComponent<Health>();
     }
     void Update ()
     {
-        if (transform.position.y > 200 || transform.position.y < -10)
+        if (player.position.y > 200 || player.position.y < 10)
         {
-            print("Your position Y is over 200 or under -10. Look at script \"CheckPosition\"");
+            print("Your position Y is over 200 or unde 10. Look at script \"CheckPosition\"");
             health.isDead = true;
         }
 	}
