@@ -10,6 +10,7 @@ public class WinningScreen : MonoBehaviour
     [SerializeField]
     private GameObject winScreen;
 
+    public int MoveSpeed;
     private bool Win = false;
 
     void Awake()
@@ -33,7 +34,7 @@ public class WinningScreen : MonoBehaviour
     {
         if (Win)
         {
-            this.gameObject.transform.Translate(0, 2, 0);
+            this.gameObject.transform.Translate(0, MoveSpeed * Time.deltaTime, 0);
         }
     }
 }
