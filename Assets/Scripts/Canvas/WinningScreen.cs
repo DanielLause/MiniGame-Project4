@@ -3,20 +3,37 @@ using System.Collections;
 
 public class WinningScreen : MonoBehaviour
 {
-    GameObject winScreen;
+    [SerializeField]
+    private GameObject mainCamera;
+    [SerializeField]
+    private GameObject winCamera;
+    [SerializeField]
+    private GameObject winScreen;
+
+    private bool Win = false;
 
     void Awake()
     {
-        winScreen = GameObject.Find("Win_Screen");
-        winScreen.gameObject.SetActive(false);
+        winCamera.SetActive(false);
+        winScreen.SetActive(false);
     }
 
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Player")
         {
-            winScreen.gameObject.SetActive(true);
-            
+            Destroy(mainCamera);
+            winScreen.SetActive(true);
+            winCamera.SetActive(true);
+            Win = true;
+        }
+    }
+
+    void Update()
+    {
+        if (Win)
+        {
+            this.gameObject.transform.Translate(0, 2, 0);
         }
     }
 }

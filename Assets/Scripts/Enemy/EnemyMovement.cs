@@ -1,22 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyMovement : MonoBehaviour {
+public class EnemyMovement : MonoBehaviour
+{
 
     public bool canRun = true;
     public Transform Player;
 
     private NavMeshAgent myAgent;
-	void Awake ()
+    private GameTime gameTime;
+
+    void Awake()
     {
         myAgent = transform.GetComponent<NavMeshAgent>();
-	}
-	
-	void Update ()
+        gameTime = GameObject.Find("GlobalScripts").transform.GetComponent<GameTime>();
+    }
+
+    void Update()
     {
-        if (canRun)
+        if (canRun && gameTime.PlayTime == 1)
         {
             myAgent.SetDestination(Player.position);
         }
-	}
+    }
 }

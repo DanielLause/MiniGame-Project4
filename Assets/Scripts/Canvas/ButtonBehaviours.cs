@@ -10,6 +10,7 @@ public class ButtonBehaviours : MonoBehaviour
     Transform startScreen;
 
     GameObject player;
+    private GameTime gameTime;
 
     [Tooltip("Makes the Mouse Cursor invisible if box is checked.")]
     public bool CursorIsVisible = false;
@@ -25,6 +26,8 @@ public class ButtonBehaviours : MonoBehaviour
         credits.gameObject.SetActive(false);
 
         player = GameObject.Find("Player");
+
+        gameTime = GameObject.Find("GlobalScripts").transform.GetComponent<GameTime>();
     }
 
     // Game Start
@@ -32,6 +35,8 @@ public class ButtonBehaviours : MonoBehaviour
     {
         startScreen.gameObject.SetActive(false);
         Cursor.visible = CursorIsVisible;
+        gameTime.PlayTime = 1;
+
     }
     // Credits
     public void OnClick_Credits()
