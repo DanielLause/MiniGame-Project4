@@ -5,6 +5,7 @@ public class Shoot : MonoBehaviour {
 
 	public GameObject BulletPrefab;
 	public Transform BulletSpawn;
+	public DroneMovement DroneMovementScript;
 	//public AudioSource ShotSound;
 	public float BulletForce = 100;
 	public float LifeTime = 1;
@@ -12,19 +13,19 @@ public class Shoot : MonoBehaviour {
 	public float MinDelayTime = 0.4f;
 	public int MaxBulletAmount = 100;
 	public float ReloadTime = 1;
-	public static bool CanShoot = true;
-	public static bool Reload = false;
+	public bool CanShoot = true;
+	public bool Reload = false;
+	[HideInInspector]
+	public Vector3 DroneTarget;
 
 	private GameObject newBullet;
 	private Rigidbody myRigidbody;
+	private RaycastHit raycastHit;
 	private int bulletAmount = 0;
-
-	void Awake()
-	{
-	}
 
 	void Update()
 	{
+		droneTarget();
 		//CooldownWeapon();
 		bulletSpawn();
 	}
@@ -47,7 +48,15 @@ public class Shoot : MonoBehaviour {
 			}
 		}
 	}
-
+	private void droneTarget()
+	{
+		Ray ray = new Ray(BulletSpawn.position, BulletSpawn.forward);
+		Physics.Raycast(ray,out raycastHit,DroneMovementScript.MaxDistance * 10000);
+		if (raycastHit.transform.localPosition != null )
+		{
+			DroneTarget = raycastHit.point;
+		}
+	}
 	void CooldownWeapon()
 	{
 		if (bulletAmount == MaxBulletAmount && !Reload)

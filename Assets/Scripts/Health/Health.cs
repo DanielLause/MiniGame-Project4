@@ -13,12 +13,9 @@ public class Health : MonoBehaviour {
 
     void Awake()
     {
-        if (Player)
-        {
-            lose_Screen = GameObject.Find("Lose_Screen");
-            lose_Screen.gameObject.SetActive(false);
-        }
         CurrentHealth = MaxHealth;
+        lose_Screen = GameObject.Find("Lose_Screen");
+        lose_Screen.gameObject.SetActive(false);
     }
     void Update()
     {
