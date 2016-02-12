@@ -7,7 +7,7 @@ public class ItemSpawn : MonoBehaviour
     public bool PlacedItems = true;
     public List<GameObject> Items;
     public List<Transform> SpawnPoints;
-    public Spawner spawner;
+    public int ItemCount = 1;
     private List<Transform> constSpawnPoints;
     private List<Transform> alreadyInUse;
     int chosedItem;
@@ -37,7 +37,7 @@ public class ItemSpawn : MonoBehaviour
     }
     private void randomSpawn()
     {
-        for (int i = 0; i <= spawner.CurrentWave.Number-1; i++)
+        for (int i = 0; i < ItemCount; i++)
         {
             if (SpawnPoints.Count == 0)
                 return;
