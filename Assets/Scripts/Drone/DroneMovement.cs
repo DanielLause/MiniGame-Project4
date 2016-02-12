@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class DroneMovement : MonoBehaviour
 {
@@ -15,26 +15,27 @@ public class DroneMovement : MonoBehaviour
     public int LightEffect = 5;
     public bool CanFly = true;
 
-
     private Rigidbody myRigid;
     private NavMeshAgent myAgent;
     private int lightEffectTimer = 0;
+
     //private bool lightOn = false;
     private bool followPlayer = false;
+
     private bool haveATarget = false;
     private bool grounded = true;
     private bool playFlyAnimation = true;
     private bool landing;
 
-    void Awake()
+    private void Awake()
     {
         //MyAnimator = transform.GetComponent<Animator>();
         myRigid = transform.GetComponent<Rigidbody>();
         myAgent = DroneNavAgent.GetComponent<NavMeshAgent>();
     }
-    void Update()
-    {
 
+    private void Update()
+    {
         MyAnimator.SetFloat("Velocity", myAgent.velocity.magnitude);
         //if (Input.GetKeyDown(KeyCode.T))
         //{
@@ -52,12 +53,10 @@ public class DroneMovement : MonoBehaviour
             }
         }
         fly();
-
     }
 
-    void fly()
+    private void fly()
     {
-
         if (grounded)
         {
             transform.localPosition = Vector3.zero;
@@ -83,7 +82,6 @@ public class DroneMovement : MonoBehaviour
                     followPlayer = false;
                     //landing = true;
                 }
-
 
                 if (transform.position.y >= Height)
                 {
@@ -119,7 +117,7 @@ public class DroneMovement : MonoBehaviour
                         }
                     }
                 }
-                else if (Input.GetButtonDown("DroneFlyToTarget") || Input.GetButtonDown("DroneFollow") || (Input.GetButtonDown("DroneMoveUp")&& grounded))
+                else if (Input.GetButtonDown("DroneFlyToTarget") || Input.GetButtonDown("DroneFollow") || (Input.GetButtonDown("DroneMoveUp") && grounded))
                 {
                     myRigid.AddForce(0, (FlyUpSpeed * 1000) * Time.deltaTime, 0);
                     grounded = false;
@@ -146,12 +144,11 @@ public class DroneMovement : MonoBehaviour
         }
     }
 
-    void lightEffect()
+    private void lightEffect()
     {
-
     }
 
-    IEnumerator lightEffect(float time)
+    private IEnumerator lightEffect(float time)
     {
         MyLight.gameObject.SetActive(false);
         yield return new WaitForSeconds(time);

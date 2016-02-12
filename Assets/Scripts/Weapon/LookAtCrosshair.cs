@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class LookAtCrosshair : MonoBehaviour
 {
     [HideInInspector]
     public Vector3 CrosshairTarget;
+
     public Camera mainCamera;
     private RaycastHit raycastHit;
     private Ray ray;
 
-    void Awake()
+    private void Awake()
     {
     }
 
-    void Update()
+    private void Update()
     {
         var x = Screen.width / 2;
         var y = Screen.height / 2;

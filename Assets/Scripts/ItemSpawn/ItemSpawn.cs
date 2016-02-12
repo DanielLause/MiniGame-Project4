@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class ItemSpawn : MonoBehaviour
 {
@@ -10,17 +9,16 @@ public class ItemSpawn : MonoBehaviour
     public int ItemCount = 1;
     private List<Transform> constSpawnPoints;
     private List<Transform> alreadyInUse;
-    int chosedItem;
-    int chosedSpawn;
+    private int chosedItem;
+    private int chosedSpawn;
 
-
-    void Awake()
+    private void Awake()
     {
         constSpawnPoints = SpawnPoints;
         alreadyInUse = new List<Transform>();
     }
 
-    void Update()
+    private void Update()
     {
         if (PlacedItems)
         {
@@ -35,6 +33,7 @@ public class ItemSpawn : MonoBehaviour
         SpawnPoints = constSpawnPoints;
         alreadyInUse.Clear();
     }
+
     private void randomSpawn()
     {
         for (int i = 0; i < ItemCount; i++)

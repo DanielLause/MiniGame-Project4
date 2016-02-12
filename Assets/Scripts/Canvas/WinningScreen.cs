@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class WinningScreen : MonoBehaviour
 {
     [SerializeField]
     private GameObject mainCamera;
+
     [SerializeField]
     private GameObject winCamera;
+
     [SerializeField]
     private GameObject winScreen;
 
     public int MoveSpeed;
     private bool Win = false;
 
-    void Awake()
+    private void Awake()
     {
         winCamera.SetActive(false);
         winScreen.SetActive(false);
     }
 
-    void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Player")
         {
@@ -30,7 +31,7 @@ public class WinningScreen : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (Win)
         {
