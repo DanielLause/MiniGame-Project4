@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour
     {
         transform.Rotate(0, Input.GetAxis("Mouse X") * RotateSpeed * Time.deltaTime, 0);
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetAxis("Run") > 0.1)
             speed = RunSpeed;
         else
             speed = MoveSpeed;
@@ -66,7 +66,7 @@ public class Movement : MonoBehaviour
 
         if (isGrounded)
         {
-            myRigid.drag = 3f;
+            myRigid.drag = 5f;
 
             if (jump)
             {

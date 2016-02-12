@@ -6,6 +6,7 @@ public class Shoot : MonoBehaviour {
 	public GameObject BulletPrefab;
 	public Transform BulletSpawn;
 	public DroneMovement DroneMovementScript;
+    public LookAtCrosshair LookAtCrosshairScript;
 	//public AudioSource ShotSound;
 	public float BulletForce = 100;
 	public float LifeTime = 1;
@@ -19,7 +20,7 @@ public class Shoot : MonoBehaviour {
 	public Vector3 DroneTarget;
 
 	private GameObject newBullet;
-	private Rigidbody myRigidbody;
+	//private Rigidbody myRigidbody;
 	private RaycastHit raycastHit;
 	private int bulletAmount = 0;
 
@@ -28,6 +29,7 @@ public class Shoot : MonoBehaviour {
 		droneTarget();
 		//CooldownWeapon();
 		bulletSpawn();
+        transform.LookAt(LookAtCrosshairScript.CrosshairTarget);
 	}
 
 	void bulletSpawn()
