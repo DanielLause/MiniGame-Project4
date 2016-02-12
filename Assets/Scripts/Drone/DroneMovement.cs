@@ -66,18 +66,18 @@ public class DroneMovement : MonoBehaviour
         if (CanFly)
         {
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetButtonDown("DroneFlyToTarget"))
                 {
                     followPlayer = false;
                     haveATarget = true;
                     playFlyAnimation = true;
                 }
-                else if (Input.GetKeyDown(KeyCode.Q))
+                else if (Input.GetButtonDown("DroneFollow"))
                 {
                     followPlayer = true;
                     playFlyAnimation = true;
                 }
-                else if (Input.GetKeyDown(KeyCode.R) && !grounded)
+                else if (Input.GetButtonDown("DroneMoveUp") && !grounded)
                 {
                     CanFly = false;
                     followPlayer = false;
@@ -119,7 +119,7 @@ public class DroneMovement : MonoBehaviour
                         }
                     }
                 }
-                else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Q) || (Input.GetKeyDown(KeyCode.R)&& grounded))
+                else if (Input.GetButtonDown("DroneFlyToTarget") || Input.GetButtonDown("DroneFollow") || (Input.GetButtonDown("DroneMoveUp")&& grounded))
                 {
                     myRigid.AddForce(0, (FlyUpSpeed * 1000) * Time.deltaTime, 0);
                     grounded = false;
