@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Movement : MonoBehaviour
 {
@@ -7,6 +6,7 @@ public class Movement : MonoBehaviour
     public float RunSpeed = 15;
     public float JumpPower = 5;
     public int RotateSpeed = 100;
+
     [HideInInspector]
     public bool Grounded = false;
 
@@ -14,18 +14,20 @@ public class Movement : MonoBehaviour
     private Rigidbody myRigid;
     private bool previouslyGrounded;
     private bool isGrounded;
+
     [SerializeField]
     private CapsuleCollider m_Capsule;
+
     private Vector3 groundContactNormal;
     private bool jumping;
     private bool jump;
 
-    void Awake()
+    private void Awake()
     {
         myRigid = transform.GetComponent<Rigidbody>();
     }
 
-    void Update()
+    private void Update()
     {
         transform.Rotate(0, Input.GetAxis("Mouse X") * RotateSpeed * Time.deltaTime, 0);
 
@@ -38,9 +40,9 @@ public class Movement : MonoBehaviour
         {
             jump = true;
         }
-
     }
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         GroundCheck();
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized * speed;

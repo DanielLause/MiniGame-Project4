@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class LookAt : MonoBehaviour
 {
-
     [SerializeField]
     private Transform WinObject;
 
-    void Update()
+    private void Update()
     {
         transform.LookAt(WinObject);
     }
