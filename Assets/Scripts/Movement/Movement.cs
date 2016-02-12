@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour
     {
         transform.Rotate(0, Input.GetAxis("Mouse X") * RotateSpeed * Time.deltaTime, 0);
 
-        if (Input.GetAxis("Run") > 0.1)
+        if (Input.GetButton("Run"))
             speed = RunSpeed;
         else
             speed = MoveSpeed;
