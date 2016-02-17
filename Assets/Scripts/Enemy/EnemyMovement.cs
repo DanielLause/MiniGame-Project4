@@ -5,7 +5,7 @@ public class EnemyMovement : MonoBehaviour
 {
 
     public bool canRun = true;
-    public Transform Player;
+    public Transform player;
 
     private NavMeshAgent myAgent;
     private GameTime gameTime;
@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     void Awake()
     {
         myAgent = transform.GetComponent<NavMeshAgent>();
+        player = GameObject.Find("Player").transform;
         gameTime = GameObject.Find("GlobalScripts").transform.GetComponent<GameTime>();
     }
 
@@ -20,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (canRun && gameTime.PlayTime == 1)
         {
-            myAgent.SetDestination(Player.position);
+            myAgent.SetDestination(player.position);
         }
     }
 }
