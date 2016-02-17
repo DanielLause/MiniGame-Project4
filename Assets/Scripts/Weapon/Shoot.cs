@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    public GameObject BulletPrefab;
+    //public GameObject BulletHostPrefab;
+    public GameObject BulletTargetPrefab;
     public Transform BulletSpawn;
     public DroneMovement DroneMovementScript;
     public LookAtCrosshair LookAtCrosshairScript;
@@ -22,12 +23,17 @@ public class Shoot : MonoBehaviour
     [HideInInspector]
     public Vector3 DroneTarget;
 
-    private GameObject newBullet;
+    private GameObject newBulletTarget;
+    private GameObject bulletHost;
+    //public Transform bulletTarget;
+    public LighteningScript myLightScript;
 
     //private Rigidbody myRigidbody;
     private RaycastHit raycastHit;
 
     private int bulletAmount = 0;
+    private bool shoot = false;
+
 
     private void Update()
     {
@@ -39,20 +45,34 @@ public class Shoot : MonoBehaviour
 
     private void bulletSpawn()
     {
+        droneTarget();
         if (CanShoot && !Reload)
         {
-            if (Input.GetAxis("Fire1") > 0.1f || Input.GetMouseButton(0))
+            
+            if (/*Input.GetAxis("Fire1") > 0.1f ||*/ Input.GetMouseButton(0))
             {
+                myLightScript.enabled = true;
+                myLightScript.shoot = true;
                 //ShotSound.Stop();
                 //ShotSound.Play();
 
-                newBullet = (GameObject)Instantiate(BulletPrefab, BulletSpawn.transform.position, BulletSpawn.transform.rotation);
-                Rigidbody bulletRig = newBullet.GetComponent<Rigidbody>();
+                newBulletTarget = (GameObject)Instantiate(BulletTargetPrefab, BulletSpawn.transform.position, BulletSpawn.transform.rotation);
+                if (newBulletTarget != null)
+                {
+                    myLightScript.enabled = true;
+                    myLightScript.TargetGameObject = newBulletTarget.gameObject;
+                }
+                else
+                    myLightScript.enabled = false;
+                Rigidbody bulletRig = newBulletTarget.GetComponent<Rigidbody>();
                 bulletRig.AddForce(transform.forward * (BulletForce * 2000) * Time.deltaTime);
+
                 bulletAmount++;
-                StartCoroutine(destroyAfterLifetime(newBullet));
+                StartCoroutine(destroyAfterLifetime(newBulletTarget));
                 StartCoroutine(shootDelay());
             }
+            
+            shoot = false;
         }
     }
 
@@ -88,6 +108,8 @@ public class Shoot : MonoBehaviour
     {
         yield return new WaitForSeconds(LifeTime);
         Destroy(mybullet);
+        myLightScript.enabled = false;
+        myLightScript.shoot = false;
     }
 
     private IEnumerator shootDelay()
