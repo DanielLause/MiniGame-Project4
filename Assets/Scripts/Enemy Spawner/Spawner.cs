@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Spawner : MonoBehaviour
 {
     [Tooltip("Does this Spawner counts more than 1 SpawnPoints fill this list")]
-    public List<Transform> OtherSpawnPoints;
+    public Transform[] OtherSpawnPoints;
 
     [Tooltip("If the Player is in one of this areas: Spawn definitely enemys as many DefinitelySpawnCount specified")]
     public List<Transform> DefinitelySpawnPoints;
@@ -16,34 +16,53 @@ public class Spawner : MonoBehaviour
     public Transform Player;
 
     public bool DefinitelySpawn = false;
-    public bool SpawnActive = true;
+    public bool SpawnActive = false;
     [Range(0, 20)]
     public float MinimumSpawnDelay = 0;
     [Range(0, 20)]
     public float MaximumSpawnDelay = 0;
+    public bool StartWithoutDistance = false;
+    public bool StartWithDistance = false;
     public float PlayerDistanceForSpawn = 10;
-    public bool StartSpawn = false;
+
     private GameObject currentEnemy;
+    private GameObject enemys;
 
     void Awake()
     {
-        GameObject enemys = new GameObject("Enemys");
+         enemys = new GameObject("Enemys");
     }
 
     void Update()
     {
-        if (StartSpawn)
+        checkDefinitelySpawn();
+
+        if (StartWithoutDistance && !StartWithDistance)
         {
-            StartSpawn = false;
+            StartWithDistance = false;
+            StartWithoutDistance = false;
             SpawnActive = true;
             spawn();
+        }
+        else if (StartWithDistance && !StartWithoutDistance)
+        {
+            StartWithoutDistance = false;
+            if (playerInDistance() && !SpawnActive)
+            {
+                SpawnActive = true;
+                spawn();
+            }
+            if (!playerInDistance() && SpawnActive)
+            {
+                SpawnActive = false;
+            }
         }
     }
 
 
     bool playerInDistance()
     {
-        return Vector3.Distance(transform.position, Player.position) >= PlayerDistanceForSpawn;
+        return (Vector3.Distance(transform.position, Player.position) <= PlayerDistanceForSpawn);
     }
 
     void checkDefinitelySpawn()
@@ -53,8 +72,17 @@ public class Spawner : MonoBehaviour
 
         if (DefinitelySpawn)
         {
-            spawn();
+            currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], transform.position, Quaternion.identity);
+            currentEnemy.transform.SetParent(enemys.transform);
+            //SpawnActive = false;
             DefinitelySpawn = false;
+            if (OtherSpawnPoints.Length >0)
+            {
+                for (int i = 0; i < OtherSpawnPoints.Length; i++)
+                {
+                    currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], OtherSpawnPoints[i].position, Quaternion.identity);
+                }
+            }
         }
     }
     float setDelay()
@@ -64,11 +92,16 @@ public class Spawner : MonoBehaviour
 
     void spawn()
     {
-        //if (SpawnActive)
-        //{
-            currentEnemy = GameObject.Instantiate(EnemyPrefabs[0]);
-            StartCoroutine(SpawnDelay(setDelay()));
-        //}
+        if (OtherSpawnPoints.Length > 0)
+        {
+            for (int i = 0; i < OtherSpawnPoints.Length; i++)
+            {
+                currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], OtherSpawnPoints[i].position, Quaternion.identity);
+            }
+        }
+        currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], transform.position, Quaternion.identity);
+        currentEnemy.transform.SetParent(enemys.transform);
+        StartCoroutine(SpawnDelay(setDelay()));
     }
 
     IEnumerator SpawnDelay(float delay)
@@ -76,7 +109,15 @@ public class Spawner : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if (SpawnActive)
         {
-            currentEnemy = GameObject.Instantiate(EnemyPrefabs[0]);
+            if (OtherSpawnPoints.Length > 0)
+            {
+                for (int i = 0; i < OtherSpawnPoints.Length; i++)
+                {
+                    currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], OtherSpawnPoints[i].position, Quaternion.identity);
+                }
+            }
+            currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], transform.position, Quaternion.identity);
+            currentEnemy.transform.SetParent(enemys.transform);
             StartCoroutine(SpawnDelay(setDelay()));
         }
     }
