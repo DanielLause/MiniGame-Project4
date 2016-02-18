@@ -22,7 +22,7 @@ public class ShadowBehavior : MonoBehaviour
         myStatePattern.SetBool("InShadow", InShadow);
         Physics.Raycast(transform.position, sun.forward * -1, out hit);
 
-        if (hit.transform == null || hit.transform.gameObject.tag == "Enemy")
+        if (hit.transform == null )
         {
             InShadow = false;
             return;
