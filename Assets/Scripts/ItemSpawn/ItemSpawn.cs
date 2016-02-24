@@ -11,11 +11,15 @@ public class ItemSpawn : MonoBehaviour
     private List<Transform> alreadyInUse;
     private int chosedItem;
     private int chosedSpawn;
+    private GameObject itemContainer;
+    private GameObject currentItem;
 
     private void Awake()
     {
         constSpawnPoints = SpawnPoints;
         alreadyInUse = new List<Transform>();
+        itemContainer = new GameObject(transform.name + "_items");
+        itemContainer.transform.SetParent(transform);
     }
 
     private void Update()
@@ -44,7 +48,8 @@ public class ItemSpawn : MonoBehaviour
             chosedSpawn = Random.Range(0, SpawnPoints.Count);
             chosedItem = Random.Range(0, Items.Count);
 
-            Instantiate(Items[chosedItem], SpawnPoints[chosedSpawn].position, Quaternion.identity);
+           currentItem= (GameObject)Instantiate(Items[chosedItem], SpawnPoints[chosedSpawn].position, Quaternion.identity);
+            currentItem.transform.SetParent(itemContainer.transform);
             alreadyInUse.Add(SpawnPoints[chosedSpawn]);
             SpawnPoints.Remove(SpawnPoints[chosedSpawn]);
         }

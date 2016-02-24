@@ -33,6 +33,7 @@ public class EnemyAi : MonoBehaviour
     private bool inShadow = false;
     private float pathDistance;
     private float sunTime;
+    private Vector3 lookTarget;
 
     void Awake()
     {
@@ -50,17 +51,21 @@ public class EnemyAi : MonoBehaviour
 
     IEnumerator getPath(Vector3 target)
     {
+        lookTarget = target;
         var waitUpdate = new WaitForEndOfFrame();
-
         myAgent.SetDestination(target);
+        transform.LookAt(lookTarget);
         while (myAgent.pathPending)
             yield return waitUpdate;
         myAgent.Stop();
         path = myAgent.path;
+        transform.LookAt(lookTarget);
+
     }
 
     IEnumerator agentFollow()
     {
+        transform.LookAt(lookTarget);
         if (Vector3.Distance(player.position, transform.position) < ActivateThreshhold)
         {
             yield return new WaitForSeconds(1);
@@ -181,6 +186,7 @@ public class EnemyAi : MonoBehaviour
         {
             yield return fixedUpdateWait;
             myAgent.Move(Vector3.ClampMagnitude((position - transform.position).normalized * myAgent.speed * Time.fixedDeltaTime, Vector3.Magnitude(position - transform.position)));
+
         }
     }
 

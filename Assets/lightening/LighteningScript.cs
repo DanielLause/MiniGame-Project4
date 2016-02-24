@@ -63,21 +63,26 @@ public class LighteningScript : MonoBehaviour
 
 	void OnDisable()
 	{
-		if (rend != null)
-			rend.enabled = false;
-		run = false;
+        if (rend != null)
+            rend.enabled = false;
+        //Destroy(rend);
+        run = false;
 	}
 
 	void OnEnable()
 	{
 		if (rend != null) {
-			rend.enabled = true;
-			Initialize();
-			StartCoroutine(updateTiling());
+            rend.enabled = true;
+            Initialize();
+            if (TargetGameObject != null)
+            {
+            StartCoroutine(updateTiling());
+            }
 		}
-	}
+        //Initialize();
+    }
 
-	public void Initialize()
+    public void Initialize()
 	{
 		max = rows * columns;
 		// add Line renderer
@@ -128,8 +133,7 @@ public class LighteningScript : MonoBehaviour
 			rend.SetVertexCount(points);
 			rend.SetWidth(lineScale,lineScale);
 			rend.SetPosition(0,transform.position);
-            var position = TargetGameObject.transform.position;
-            if(position !=null)
+            if(TargetGameObject.transform.position != null)
             {
 			rend.SetPosition(points-1, TargetGameObject.transform.position);
             }

@@ -30,7 +30,8 @@ public class Spawner : MonoBehaviour
 
     void Awake()
     {
-         enemys = new GameObject("Enemys");
+         enemys = new GameObject(transform.name + "_enemys");
+        enemys.transform.SetParent(transform);
     }
 
     void Update()
@@ -81,6 +82,7 @@ public class Spawner : MonoBehaviour
                 for (int i = 0; i < OtherSpawnPoints.Length; i++)
                 {
                     currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], OtherSpawnPoints[i].position, Quaternion.identity);
+                    currentEnemy.transform.SetParent(enemys.transform);
                 }
             }
         }
