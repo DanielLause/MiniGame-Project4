@@ -1,21 +1,19 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class ButtonBehaviours : MonoBehaviour
 {
-    Transform credits;
-    Transform options;
-    Transform startScreen;
+    private Transform credits;
+    private Transform options;
+    private Transform startScreen;
 
-    GameObject player;
+    private GameObject player;
     private GameTime gameTime;
 
     [Tooltip("Makes the Mouse Cursor invisible if box is checked.")]
     public bool CursorIsVisible = false;
 
-    void Awake()
+    private void Awake()
     {
         startScreen = transform.FindChild("StartScreen");
 
@@ -36,38 +34,45 @@ public class ButtonBehaviours : MonoBehaviour
         startScreen.gameObject.SetActive(false);
         Cursor.visible = CursorIsVisible;
         gameTime.PlayTime = 1;
-
     }
+
     // Credits
     public void OnClick_Credits()
     {
         credits.gameObject.SetActive(true);
     }
+
     public void OnClick_Credits_Back()
     {
         credits.gameObject.SetActive(false);
     }
+
     public void OnClick_Björn()
     {
         SceneManager.LoadScene(1);
     }
+
     public void OnClick_Basti()
     {
         SceneManager.LoadScene(2);
     }
+
     public void OnClick_Irina()
     {
         SceneManager.LoadScene(3);
     }
+
     // Options
     public void OnClick_Options()
     {
         options.gameObject.SetActive(true);
     }
+
     public void OnClick_Options_Back()
     {
         options.gameObject.SetActive(false);
     }
+
     // Options - MouseVisible
     public void OnClick_Options_MouseVisible()
     {
@@ -76,6 +81,7 @@ public class ButtonBehaviours : MonoBehaviour
             // text.text bla == CursorIsVisible
         }
     }
+
     // Retry
     public void OnClick_Retry()
     {

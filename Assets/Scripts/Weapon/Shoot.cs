@@ -49,7 +49,7 @@ public class Shoot : MonoBehaviour
         if (CanShoot && !Reload)
         {
             
-            if (/*Input.GetAxis("Fire1") > 0.1f ||*/ Input.GetMouseButton(0))
+            if (Input.GetAxis("Fire1") > 0.1f || Input.GetMouseButton(0))
             {
                 myLightScript.enabled = true;
                 myLightScript.shoot = true;
