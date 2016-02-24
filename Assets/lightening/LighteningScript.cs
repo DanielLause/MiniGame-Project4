@@ -128,7 +128,11 @@ public class LighteningScript : MonoBehaviour
 			rend.SetVertexCount(points);
 			rend.SetWidth(lineScale,lineScale);
 			rend.SetPosition(0,transform.position);
+            var position = TargetGameObject.transform.position;
+            if(position !=null)
+            {
 			rend.SetPosition(points-1, TargetGameObject.transform.position);
+            }
 
 			// if more than 2 points than we can randomize point positions
 			if (points >= 3)

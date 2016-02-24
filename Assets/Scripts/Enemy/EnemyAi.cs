@@ -36,6 +36,7 @@ public class EnemyAi : MonoBehaviour
 
     void Awake()
     {
+
         waypointContainer = GameObject.Find("WaypointContainer").transform;
         sun = GameObject.Find("Directional Light");
         player = GameObject.Find("Player").transform;
@@ -100,20 +101,18 @@ public class EnemyAi : MonoBehaviour
     IEnumerator calcSun()
     {
         calculatingSun = true;
-        var corner = new Vector3[path.corners.Length];
-        path.GetCornersNonAlloc(corner);
 
         pathDistance = getLength(path);
         if (pathDistance < Treshhold || (path.corners.Length < 3 && pathDistance < LowTreshhold))
             yield break;
 
-        var ratio = path.corners.Length / pathDistance;
+        var step = pathDistance / path.corners.Length;
+        var ratio = 1 / step;
         var count = (int)(pathDistance * ratio);
-        var step = 1 / ratio;
         var sunSamples = new List<Vector3>();
         for (int i = 1; i <= count; i++)
         {
-            var sampled = sample(corner, i * step);
+            var sampled = sample(path.corners, i * step);
             if (checkSun(sampled))
             {
                 sunSamples.Add(sampled);
@@ -122,9 +121,10 @@ public class EnemyAi : MonoBehaviour
         var sunTime = sunSamples.Count / (float)path.corners.Length;
         if (sunTime >= SunThreshold)
         {
-            var waypoints = wayPoints.Where(t => !checkSun(t.position));
-            waypoints = waypoints.OrderBy(s => (s.position - sunSamples[0]).sqrMagnitude);
-            yield return getPath(waypoints.First().position);
+            var waypoints = wayPoints.OrderBy(waypoint => (waypoint.position - sunSamples[0]).sqrMagnitude);
+            var point = waypoints.FirstOrDefault(wp => !checkSun(wp.position));
+            if (point != null)
+                yield return StartCoroutine(getPath(point.position));
         }
         calculatingSun = false;
     }
@@ -140,11 +140,12 @@ public class EnemyAi : MonoBehaviour
         float breakProgress = 0;
         bool searchingPath = false;
         bool waitingForSun = false;
-        while (progress < length - 2)
+        while (progress < length - 1)
         {
             yield return fixedUpdateWait;
             progress += myAgent.speed * Time.fixedDeltaTime;
-            myAgent.Move(Vector3.ClampMagnitude((sample(corner, progress) - transform.position), length - progress));
+            var movement = Vector3.ClampMagnitude(sample(corner, progress) - transform.position, myAgent.speed * Time.fixedDeltaTime);
+            myAgent.Move(Vector3.ClampMagnitude(movement, length - progress));
             if (progress >= RecalcThreshold)
             {
                 if (!myAgent.pathPending)
@@ -153,7 +154,7 @@ public class EnemyAi : MonoBehaviour
                     {
                         searchingPath = true;
                         breakProgress = progress;
-                        StartCoroutine(getPath(transform.position));
+                        StartCoroutine(getPath(player.position));
                     }
                     else if (!waitingForSun)
                     {
@@ -162,8 +163,7 @@ public class EnemyAi : MonoBehaviour
                     }
                     else if (!calculatingSun)
                     {
-                        yield return FixPath(sample(path.corners, progress - breakProgress));
-                        StartCoroutine(Run(progress - breakProgress));
+                        StartCoroutine(Run(0));
                         yield break;
                     }
                 }
@@ -191,27 +191,4 @@ public class EnemyAi : MonoBehaviour
         return rayHit.transform == null;
     }
 
-    void anyFunction()
-    {
-        List<Vector3> wayPoints = new List<Vector3>();
-        for (int i = 1; i < path.corners.Length; i++)
-        {
-            wayPoints.Clear();
-            //divide(path.corners[i - 1], path.corners[i], wayPoints);
-            foreach (var wayPoint in wayPoints)
-            {
-                if (checkSun(wayPoint))
-                {
-
-                }
-            }
-        }
-    }
-    //void divide(Vector3 start, Vector3 end, List<Vector3> wayPoints)
-    //{
-    //    wayPoints.Add(start);
-    //    wayPoints.Add((start + end) / 2);
-    //    wayPoints.Add(end);
-
-    //}
 }
