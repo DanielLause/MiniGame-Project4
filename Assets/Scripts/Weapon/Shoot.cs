@@ -26,6 +26,7 @@ public class Shoot : MonoBehaviour
     private GameObject newBulletTarget;
     private GameObject bulletHost;
     //public Transform bulletTarget;
+    private GameObject bulletContainer;
     public LighteningScript myLightScript;
 
     //private Rigidbody myRigidbody;
@@ -34,6 +35,12 @@ public class Shoot : MonoBehaviour
     private int bulletAmount = 0;
     private bool shoot = false;
 
+
+    private void Awake()
+    {
+        bulletContainer = new GameObject(transform.name + "_bullets");
+        bulletContainer.transform.SetParent(transform);
+    }
 
     private void Update()
     {
@@ -48,22 +55,30 @@ public class Shoot : MonoBehaviour
         droneTarget();
         if (CanShoot && !Reload)
         {
-            
+
             if (Input.GetAxis("Fire1") > 0.1f || Input.GetMouseButton(0))
             {
-                myLightScript.enabled = true;
-                myLightScript.shoot = true;
                 //ShotSound.Stop();
                 //ShotSound.Play();
 
                 newBulletTarget = (GameObject)Instantiate(BulletTargetPrefab, BulletSpawn.transform.position, BulletSpawn.transform.rotation);
-                if (newBulletTarget != null)
+                newBulletTarget.transform.SetParent(bulletContainer.transform);
+
+                if (newBulletTarget.gameObject != null)
                 {
+                    myLightScript.enabled = true;
+                    myLightScript.shoot = true;
+                    myLightScript.gameObject.SetActive(true);
                     myLightScript.enabled = true;
                     myLightScript.TargetGameObject = newBulletTarget.gameObject;
                 }
                 else
+                {
                     myLightScript.enabled = false;
+                    myLightScript.gameObject.SetActive(false);
+
+                }
+
                 Rigidbody bulletRig = newBulletTarget.GetComponent<Rigidbody>();
                 bulletRig.AddForce(transform.forward * (BulletForce * 2000) * Time.deltaTime);
 
@@ -71,7 +86,7 @@ public class Shoot : MonoBehaviour
                 StartCoroutine(destroyAfterLifetime(newBulletTarget));
                 StartCoroutine(shootDelay());
             }
-            
+
             shoot = false;
         }
     }
@@ -107,9 +122,10 @@ public class Shoot : MonoBehaviour
     private IEnumerator destroyAfterLifetime(GameObject mybullet)
     {
         yield return new WaitForSeconds(LifeTime);
-        Destroy(mybullet);
         myLightScript.enabled = false;
         myLightScript.shoot = false;
+        myLightScript.gameObject.SetActive(false);
+        Destroy(mybullet);
     }
 
     private IEnumerator shootDelay()
