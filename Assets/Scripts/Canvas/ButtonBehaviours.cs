@@ -81,6 +81,11 @@ public class ButtonBehaviours : MonoBehaviour
             // text.text bla == CursorIsVisible
         }
     }
+    // 
+    public void OnClick_Tutorial()
+    {
+        SceneManager.LoadScene(4);
+    }
 
     // Retry
     public void OnClick_Retry()
