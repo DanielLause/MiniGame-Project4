@@ -8,10 +8,16 @@ using System.Runtime.InteropServices;
 
 public class EnemyAi : MonoBehaviour
 {
+    [Range(0, 10)]
+    public float ActivateThreshhold;
     [Range(0, 50)]
     public float Treshhold;
     [Range(1, 50)]
     public float LowTreshhold;
+    [Range(0, 1)]
+    public float SunThreshold;
+    [Range(0, 50)]
+    public float RecalcThreshold;
 
     private Transform waypointContainer;
 
@@ -23,9 +29,11 @@ public class EnemyAi : MonoBehaviour
     private NavMeshHit navHit;
     private RaycastHit rayHit;
 
-    private float sunTime;
+    private bool calculatingSun = false;
     private bool inShadow = false;
     private float pathDistance;
+    private float sunTime;
+
     void Awake()
     {
         waypointContainer = GameObject.Find("WaypointContainer").transform;
@@ -36,22 +44,35 @@ public class EnemyAi : MonoBehaviour
     }
     void Start()
     {
-
-        agentFollow();
+        StartCoroutine(agentFollow());
     }
 
-    void getPath()
+    IEnumerator getPath(Vector3 target)
     {
-        path = new NavMeshPath();
-        myAgent.CalculatePath(player.position, path);
+        var waitUpdate = new WaitForEndOfFrame();
 
+        myAgent.SetDestination(target);
+        while (myAgent.pathPending)
+            yield return waitUpdate;
+        myAgent.Stop();
+        path = myAgent.path;
     }
-    void agentFollow()
+
+    IEnumerator agentFollow()
     {
-        getPath();
-        calcSun();
-        StartCoroutine(Run());
+        if (Vector3.Distance(player.position, transform.position) < ActivateThreshhold)
+        {
+            yield return new WaitForSeconds(1);
+            StartCoroutine(agentFollow());
+        }
+        else
+        {
+            yield return StartCoroutine(getPath(player.position));
+            yield return StartCoroutine(calcSun());
+            yield return StartCoroutine(Run(0));
+        }
     }
+
     float getLength(NavMeshPath path)
     {
         float length = 0;
@@ -61,58 +82,115 @@ public class EnemyAi : MonoBehaviour
         }
         return length;
     }
-    Vector3 sample(NavMeshPath path, float t)
+
+    Vector3 sample(Vector3[] path, float t)
     {
-        for (int i = 0; i < path.corners.Length - 1; i++)
+        for (int i = 0; i < path.Length - 1; i++)
         {
-            var edge = path.corners[i + 1] - path.corners[i];
+            var edge = path[i + 1] - path[i];
             var edgeLength = edge.magnitude;
             if (edgeLength < t)
                 t -= edgeLength;
             else
-                return Vector3.Lerp(path.corners[i], path.corners[i + 1], t / edgeLength);
+                return Vector3.Lerp(path[i], path[i + 1], t / edgeLength);
         }
-        return path.corners[path.corners.Length - 1];
+        return path[path.Length - 1];
     }
-    void calcSun()
+
+    IEnumerator calcSun()
     {
+        calculatingSun = true;
         var corner = new Vector3[path.corners.Length];
         path.GetCornersNonAlloc(corner);
 
         pathDistance = getLength(path);
         if (pathDistance < Treshhold || (path.corners.Length < 3 && pathDistance < LowTreshhold))
-            return;
+            yield break;
 
-        var ratio = pathDistance / path.corners.Length;
+        var ratio = path.corners.Length / pathDistance;
         var count = (int)(pathDistance * ratio);
         var step = 1 / ratio;
-        for (int i = 1; i < count; i++)
+        var sunSamples = new List<Vector3>();
+        for (int i = 1; i <= count; i++)
         {
-            var sampled = sample(path, i * step);
+            var sampled = sample(corner, i * step);
             if (checkSun(sampled))
             {
-                print("i found sun");
+                sunSamples.Add(sampled);
             }
         }
+        var sunTime = sunSamples.Count / (float)path.corners.Length;
+        if (sunTime >= SunThreshold)
+        {
+            var waypoints = wayPoints.Where(t => !checkSun(t.position));
+            waypoints = waypoints.OrderBy(s => (s.position - sunSamples[0]).sqrMagnitude);
+            yield return getPath(waypoints.First().position);
+        }
+        calculatingSun = false;
     }
-    IEnumerator Run()
+
+    IEnumerator Run(float initialProgress)
     {
         var fixedUpdateWait = new WaitForFixedUpdate();
+
+        Vector3[] corner = new Vector3[path.corners.Length];
+        path.GetCornersNonAlloc(corner);
         var length = getLength(path);
-        float progress = 0;
-        while (progress < length)
+        float progress = initialProgress;
+        float breakProgress = 0;
+        bool searchingPath = false;
+        bool waitingForSun = false;
+        while (progress < length - 2)
         {
             yield return fixedUpdateWait;
             progress += myAgent.speed * Time.fixedDeltaTime;
-            myAgent.Move(Vector3.ClampMagnitude((sample(path, progress) - transform.position), length - progress));
+            myAgent.Move(Vector3.ClampMagnitude((sample(corner, progress) - transform.position), length - progress));
+            if (progress >= RecalcThreshold)
+            {
+                if (!myAgent.pathPending)
+                {
+                    if (!searchingPath)
+                    {
+                        searchingPath = true;
+                        breakProgress = progress;
+                        StartCoroutine(getPath(transform.position));
+                    }
+                    else if (!waitingForSun)
+                    {
+                        waitingForSun = true;
+                        StartCoroutine(calcSun());
+                    }
+                    else if (!calculatingSun)
+                    {
+                        yield return FixPath(sample(path.corners, progress - breakProgress));
+                        StartCoroutine(Run(progress - breakProgress));
+                        yield break;
+                    }
+                }
+            }
+        }
+
+        StartCoroutine(agentFollow());
+    }
+
+    private IEnumerator FixPath(Vector3 position)
+    {
+        var fixedUpdateWait = new WaitForFixedUpdate();
+
+        while (Vector3.Distance(transform.position, position) > 1)
+        {
+            yield return fixedUpdateWait;
+            myAgent.Move(Vector3.ClampMagnitude((position - transform.position).normalized * myAgent.speed * Time.fixedDeltaTime, Vector3.Magnitude(position - transform.position)));
         }
     }
+
     bool checkSun(Vector3 position)
     {
         Physics.Raycast(position, -sun.transform.forward, out rayHit);
 
         return rayHit.transform == null;
     }
+
     void anyFunction()
     {
         List<Vector3> wayPoints = new List<Vector3>();
