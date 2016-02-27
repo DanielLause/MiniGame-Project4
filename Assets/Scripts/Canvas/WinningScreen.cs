@@ -8,8 +8,8 @@ public class WinningScreen : MonoBehaviour
     [SerializeField]
     private GameObject winCamera;
 
-    [SerializeField]
-    private GameObject winScreen;
+    //[SerializeField]
+    //private GameObject winScreen;
 
     public int MoveSpeed;
     private bool Win = false;
@@ -17,7 +17,7 @@ public class WinningScreen : MonoBehaviour
     private void Awake()
     {
         winCamera.SetActive(false);
-        winScreen.SetActive(false);
+        //winScreen.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -25,7 +25,7 @@ public class WinningScreen : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Destroy(mainCamera);
-            winScreen.SetActive(true);
+            //winScreen.SetActive(true);
             winCamera.SetActive(true);
             Win = true;
         }
