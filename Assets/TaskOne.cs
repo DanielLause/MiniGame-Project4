@@ -10,7 +10,7 @@ public class TaskOne : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "bullet")
+        if (other.gameObject.tag == "Bullet")
         {
             this.gameObject.SetActive(false);
             taskOne.SetActive(false);
