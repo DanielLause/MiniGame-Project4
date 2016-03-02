@@ -47,6 +47,10 @@ public class Shoot : MonoBehaviour
         droneTarget();
         //CooldownWeapon();
         bulletSpawn();
+    }
+    private void FixedUpdate()
+    {
+
         transform.LookAt(LookAtCrosshairScript.CrosshairTarget);
     }
 
