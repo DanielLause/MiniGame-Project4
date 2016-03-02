@@ -7,12 +7,23 @@ ModelImporter:
   fileIDToRecycleName:
     100000: Flaggenmast_Klein_Modul
     100002: //RootNode
+    100004: House_Modul_Flaggenmast
+    100006: Flaggenmast_Klein
     400000: Flaggenmast_Klein_Modul
     400002: //RootNode
+    400004: House_Modul_Flaggenmast
+    400006: Flaggenmast_Klein
     2300000: Flaggenmast_Klein_Modul
+    2300002: House_Modul_Flaggenmast
+    2300004: Flaggenmast_Klein
     3300000: Flaggenmast_Klein_Modul
+    3300002: House_Modul_Flaggenmast
+    3300004: Flaggenmast_Klein
     4300000: Flaggenmast_Klein_Modul
+    4300002: House_Modul_Flaggenmast
+    4300004: Flaggenmast_Klein
     6400000: Flaggenmast_Klein_Modul
+    6400002: Flaggenmast_Klein
   materials:
     importMaterials: 1
     materialName: 0
@@ -39,7 +50,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

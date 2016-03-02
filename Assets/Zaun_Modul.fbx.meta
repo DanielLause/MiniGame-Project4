@@ -1,0 +1,511 @@
+fileFormatVersion: 2
+guid: f0ddc463af38d664ba70a85f0223fc15
+timeCreated: 1455666799
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Stab
+    100002: Zaun 1
+    100004: //RootNode
+    100006: Zaun1
+    100008: Fuss
+    100010: Zapfen
+    100012: Zaun2
+    100014: Wirbel
+    100016: Wirbel1
+    100018: Stab1
+    100020: Wirbel2
+    100022: Wirbel_Neu
+    100024: Wirbel_Neu1
+    100026: Wirbel_Links
+    100028: Wirbel_Rechts
+    100030: Zaunstueck_Mitte
+    100032: Zaunstueck_Oben
+    100034: Zaunstueck_Unten
+    100036: Blatt
+    100038: Blatt 1
+    100040: Wirbel_Rechts1
+    100042: Abschlussstueck1
+    100044: Blatt 2
+    100046: Blatt 3
+    100048: Wirbel_Rechts2
+    100050: Wirbel_Rechts3
+    100052: Zapfen1
+    100054: Abschlussstueck
+    100056: Abschlussstueck2
+    100058: Abschlussstueck3
+    100060: Abschlussstueck4
+    100062: Zaunstueck_01
+    100064: Zaunstueck_02
+    100066: Zaunstueck_03
+    100068: Anschlussstuecke
+    100070: Wirbel_01
+    100072: Wirbel_02
+    100074: Zaunstuecke
+    100076: Abschlussstueck5
+    100078: Wirbel_03
+    100080: Wirbel_04
+    100082: Zaunstueck_04
+    100084: Abschlussstueck_01
+    100086: Abschlussstueck_02
+    100088: Abschlussstueck_03
+    100090: Abschlussstueck_04
+    100092: Abschlussstueck_05
+    100094: Abschlussstueck_06
+    100096: Zapfen_01
+    100098: Zapfen_02
+    100100: Stange
+    100102: Abschlussstuecke
+    100104: LP_Abschlussstueck_01
+    100106: LP_Abschlussstueck_02
+    100108: LP_Abschlussstueck_03
+    100110: LP_Abschlussstueck_04
+    100112: LP_Abschlussstueck_05
+    100114: LP_Abschlussstueck_06
+    100116: LP_Blatt_01
+    100118: LP_Blatt_01 1
+    100120: LP_Blatt_01 2
+    100122: LP_Blatt_01 3
+    100124: LP_Fuss
+    100126: LP_Stange
+    100128: LP_Wirbel_01
+    100130: LP_Wirbel_02
+    100132: LP_Wirbel_03
+    100134: LP_Wirbel_04
+    100136: LP_Zapfen_01
+    100138: LP_Zapfen_02
+    100140: LP_Zaunstueck_01
+    100142: LP_Zaunstueck_02
+    100144: LP_Zaunstueck_03
+    100146: LP_Zaunstueck_04
+    100148: LP_Zaun
+    100150: LP_Zauneckstueck
+    400000: Stab
+    400002: Zaun 1
+    400004: //RootNode
+    400006: Zaun1
+    400008: Fuss
+    400010: Zapfen
+    400012: Zaun2
+    400014: Wirbel
+    400016: Wirbel1
+    400018: Stab1
+    400020: Wirbel2
+    400022: Wirbel_Neu
+    400024: Wirbel_Neu1
+    400026: Wirbel_Links
+    400028: Wirbel_Rechts
+    400030: Zaunstueck_Mitte
+    400032: Zaunstueck_Oben
+    400034: Zaunstueck_Unten
+    400036: Blatt
+    400038: Blatt 1
+    400040: Wirbel_Rechts1
+    400042: Abschlussstueck1
+    400044: Blatt 2
+    400046: Blatt 3
+    400048: Wirbel_Rechts2
+    400050: Wirbel_Rechts3
+    400052: Zapfen1
+    400054: Abschlussstueck
+    400056: Abschlussstueck2
+    400058: Abschlussstueck3
+    400060: Abschlussstueck4
+    400062: Zaunstueck_01
+    400064: Zaunstueck_02
+    400066: Zaunstueck_03
+    400068: Anschlussstuecke
+    400070: Wirbel_01
+    400072: Wirbel_02
+    400074: Zaunstuecke
+    400076: Abschlussstueck5
+    400078: Wirbel_03
+    400080: Wirbel_04
+    400082: Zaunstueck_04
+    400084: Abschlussstueck_01
+    400086: Abschlussstueck_02
+    400088: Abschlussstueck_03
+    400090: Abschlussstueck_04
+    400092: Abschlussstueck_05
+    400094: Abschlussstueck_06
+    400096: Zapfen_01
+    400098: Zapfen_02
+    400100: Stange
+    400102: Abschlussstuecke
+    400104: LP_Abschlussstueck_01
+    400106: LP_Abschlussstueck_02
+    400108: LP_Abschlussstueck_03
+    400110: LP_Abschlussstueck_04
+    400112: LP_Abschlussstueck_05
+    400114: LP_Abschlussstueck_06
+    400116: LP_Blatt_01
+    400118: LP_Blatt_01 1
+    400120: LP_Blatt_01 2
+    400122: LP_Blatt_01 3
+    400124: LP_Fuss
+    400126: LP_Stange
+    400128: LP_Wirbel_01
+    400130: LP_Wirbel_02
+    400132: LP_Wirbel_03
+    400134: LP_Wirbel_04
+    400136: LP_Zapfen_01
+    400138: LP_Zapfen_02
+    400140: LP_Zaunstueck_01
+    400142: LP_Zaunstueck_02
+    400144: LP_Zaunstueck_03
+    400146: LP_Zaunstueck_04
+    400148: LP_Zaun
+    400150: LP_Zauneckstueck
+    2300000: Stab
+    2300002: Zaun 1
+    2300004: Zaun1
+    2300006: Fuss
+    2300008: Zapfen
+    2300010: Zaun2
+    2300012: Wirbel
+    2300014: Wirbel1
+    2300016: Stab1
+    2300018: Wirbel2
+    2300020: Wirbel_Neu
+    2300022: Wirbel_Neu1
+    2300024: Wirbel_Links
+    2300026: Wirbel_Rechts
+    2300028: Zaunstueck_Mitte
+    2300030: Zaunstueck_Oben
+    2300032: Zaunstueck_Unten
+    2300034: Blatt
+    2300036: Blatt 1
+    2300038: Wirbel_Rechts1
+    2300040: Abschlussstueck1
+    2300042: Blatt 2
+    2300044: Blatt 3
+    2300046: Wirbel_Rechts2
+    2300048: Wirbel_Rechts3
+    2300050: Zapfen1
+    2300052: Abschlussstueck
+    2300054: Abschlussstueck2
+    2300056: Abschlussstueck3
+    2300058: Abschlussstueck4
+    2300060: Zaunstueck_01
+    2300062: Zaunstueck_02
+    2300064: Zaunstueck_03
+    2300066: Wirbel_01
+    2300068: Wirbel_02
+    2300070: Abschlussstueck5
+    2300072: Wirbel_03
+    2300074: Wirbel_04
+    2300076: Zaunstueck_04
+    2300078: Abschlussstueck_01
+    2300080: Abschlussstueck_02
+    2300082: Abschlussstueck_03
+    2300084: Abschlussstueck_04
+    2300086: Abschlussstueck_05
+    2300088: Abschlussstueck_06
+    2300090: Zapfen_01
+    2300092: Zapfen_02
+    2300094: Stange
+    2300096: LP_Abschlussstueck_01
+    2300098: LP_Abschlussstueck_02
+    2300100: LP_Abschlussstueck_03
+    2300102: LP_Abschlussstueck_04
+    2300104: LP_Abschlussstueck_05
+    2300106: LP_Abschlussstueck_06
+    2300108: LP_Blatt_01
+    2300110: LP_Blatt_01 1
+    2300112: LP_Blatt_01 2
+    2300114: LP_Blatt_01 3
+    2300116: LP_Fuss
+    2300118: LP_Stange
+    2300120: LP_Wirbel_01
+    2300122: LP_Wirbel_02
+    2300124: LP_Wirbel_03
+    2300126: LP_Wirbel_04
+    2300128: LP_Zapfen_01
+    2300130: LP_Zapfen_02
+    2300132: LP_Zaunstueck_01
+    2300134: LP_Zaunstueck_02
+    2300136: LP_Zaunstueck_03
+    2300138: LP_Zaunstueck_04
+    2300140: LP_Zaun
+    2300142: LP_Zauneckstueck
+    3300000: Stab
+    3300002: Zaun 1
+    3300004: Zaun1
+    3300006: Fuss
+    3300008: Zapfen
+    3300010: Zaun2
+    3300012: Wirbel
+    3300014: Wirbel1
+    3300016: Stab1
+    3300018: Wirbel2
+    3300020: Wirbel_Neu
+    3300022: Wirbel_Neu1
+    3300024: Wirbel_Links
+    3300026: Wirbel_Rechts
+    3300028: Zaunstueck_Mitte
+    3300030: Zaunstueck_Oben
+    3300032: Zaunstueck_Unten
+    3300034: Blatt
+    3300036: Blatt 1
+    3300038: Wirbel_Rechts1
+    3300040: Abschlussstueck1
+    3300042: Blatt 2
+    3300044: Blatt 3
+    3300046: Wirbel_Rechts2
+    3300048: Wirbel_Rechts3
+    3300050: Zapfen1
+    3300052: Abschlussstueck
+    3300054: Abschlussstueck2
+    3300056: Abschlussstueck3
+    3300058: Abschlussstueck4
+    3300060: Zaunstueck_01
+    3300062: Zaunstueck_02
+    3300064: Zaunstueck_03
+    3300066: Wirbel_01
+    3300068: Wirbel_02
+    3300070: Abschlussstueck5
+    3300072: Wirbel_03
+    3300074: Wirbel_04
+    3300076: Zaunstueck_04
+    3300078: Abschlussstueck_01
+    3300080: Abschlussstueck_02
+    3300082: Abschlussstueck_03
+    3300084: Abschlussstueck_04
+    3300086: Abschlussstueck_05
+    3300088: Abschlussstueck_06
+    3300090: Zapfen_01
+    3300092: Zapfen_02
+    3300094: Stange
+    3300096: LP_Abschlussstueck_01
+    3300098: LP_Abschlussstueck_02
+    3300100: LP_Abschlussstueck_03
+    3300102: LP_Abschlussstueck_04
+    3300104: LP_Abschlussstueck_05
+    3300106: LP_Abschlussstueck_06
+    3300108: LP_Blatt_01
+    3300110: LP_Blatt_01 1
+    3300112: LP_Blatt_01 2
+    3300114: LP_Blatt_01 3
+    3300116: LP_Fuss
+    3300118: LP_Stange
+    3300120: LP_Wirbel_01
+    3300122: LP_Wirbel_02
+    3300124: LP_Wirbel_03
+    3300126: LP_Wirbel_04
+    3300128: LP_Zapfen_01
+    3300130: LP_Zapfen_02
+    3300132: LP_Zaunstueck_01
+    3300134: LP_Zaunstueck_02
+    3300136: LP_Zaunstueck_03
+    3300138: LP_Zaunstueck_04
+    3300140: LP_Zaun
+    3300142: LP_Zauneckstueck
+    4300000: Stab
+    4300002: Zaun
+    4300004: Zaun1
+    4300006: Zaun2
+    4300008: Zapfen
+    4300010: Fuss
+    4300012: Wirbel
+    4300014: Wirbel1
+    4300016: Stab1
+    4300018: Wirbel2
+    4300020: Wirbel_Neu
+    4300022: Wirbel_Neu1
+    4300024: Zaunstueck_Oben
+    4300026: Zaunstueck_Unten
+    4300028: Zaunstueck_Mitte
+    4300030: Wirbel_Rechts
+    4300032: Wirbel_Links
+    4300034: Blatt
+    4300036: Wirbel_Rechts1
+    4300038: Blatt
+    4300040: Abschlussstueck1
+    4300042: Wirbel_Rechts2
+    4300044: Blatt
+    4300046: Wirbel_Rechts3
+    4300048: Blatt
+    4300050: Zapfen1
+    4300052: Zaunstueck_01
+    4300054: Zaunstueck_02
+    4300056: Zaunstueck_03
+    4300058: Abschlussstueck
+    4300060: Abschlussstueck2
+    4300062: Abschlussstueck3
+    4300064: Abschlussstueck4
+    4300066: Wirbel_01
+    4300068: Wirbel_02
+    4300070: Abschlussstueck5
+    4300072: Zaunstueck_04
+    4300074: Wirbel_03
+    4300076: Wirbel_04
+    4300078: Abschlussstueck_01
+    4300080: Abschlussstueck_02
+    4300082: Abschlussstueck_03
+    4300084: Abschlussstueck_04
+    4300086: Abschlussstueck_05
+    4300088: Abschlussstueck_06
+    4300090: Zapfen_01
+    4300092: Zapfen_02
+    4300094: Stange
+    4300096: LP_Stange
+    4300098: LP_Fuss
+    4300100: LP_Abschlussstueck_01
+    4300102: LP_Abschlussstueck_02
+    4300104: LP_Abschlussstueck_03
+    4300106: LP_Abschlussstueck_04
+    4300108: LP_Abschlussstueck_05
+    4300110: LP_Abschlussstueck_06
+    4300112: LP_Zaunstueck_04
+    4300114: LP_Zaunstueck_03
+    4300116: LP_Zaunstueck_02
+    4300118: LP_Zaunstueck_01
+    4300120: LP_Zapfen_01
+    4300122: LP_Zapfen_02
+    4300124: LP_Wirbel_01
+    4300126: LP_Blatt_01
+    4300128: LP_Wirbel_02
+    4300130: LP_Blatt_01
+    4300132: LP_Wirbel_03
+    4300134: LP_Blatt_01
+    4300136: LP_Wirbel_04
+    4300138: LP_Blatt_01
+    4300140: LP_Zauneckstueck
+    4300142: LP_Zaun
+    6400000: Stab
+    6400002: Zaun 1
+    6400004: Zaun1
+    6400006: Fuss
+    6400008: Zapfen
+    6400010: Zaun2
+    6400012: Wirbel
+    6400014: Wirbel1
+    6400016: Stab1
+    6400018: Wirbel2
+    6400020: Wirbel_Neu
+    6400022: Wirbel_Neu1
+    6400024: Wirbel_Links
+    6400026: Wirbel_Rechts
+    6400028: Zaunstueck_Mitte
+    6400030: Zaunstueck_Oben
+    6400032: Zaunstueck_Unten
+    6400034: Blatt
+    6400036: Blatt 1
+    6400038: Wirbel_Rechts1
+    6400040: Abschlussstueck1
+    6400042: Blatt 2
+    6400044: Blatt 3
+    6400046: Wirbel_Rechts2
+    6400048: Wirbel_Rechts3
+    6400050: Zapfen1
+    6400052: Abschlussstueck
+    6400054: Abschlussstueck2
+    6400056: Abschlussstueck3
+    6400058: Abschlussstueck4
+    6400060: Zaunstueck_01
+    6400062: Zaunstueck_02
+    6400064: Zaunstueck_03
+    6400066: Wirbel_01
+    6400068: Wirbel_02
+    6400070: Abschlussstueck5
+    6400072: Wirbel_03
+    6400074: Wirbel_04
+    6400076: Zaunstueck_04
+    6400078: Abschlussstueck_01
+    6400080: Abschlussstueck_02
+    6400082: Abschlussstueck_03
+    6400084: Abschlussstueck_04
+    6400086: Abschlussstueck_05
+    6400088: Abschlussstueck_06
+    6400090: Zapfen_01
+    6400092: Zapfen_02
+    6400094: Stange
+    6400096: LP_Abschlussstueck_01
+    6400098: LP_Abschlussstueck_02
+    6400100: LP_Abschlussstueck_03
+    6400102: LP_Abschlussstueck_04
+    6400104: LP_Abschlussstueck_05
+    6400106: LP_Abschlussstueck_06
+    6400108: LP_Blatt_01
+    6400110: LP_Blatt_01 1
+    6400112: LP_Blatt_01 2
+    6400114: LP_Blatt_01 3
+    6400116: LP_Fuss
+    6400118: LP_Stange
+    6400120: LP_Wirbel_01
+    6400122: LP_Wirbel_02
+    6400124: LP_Wirbel_03
+    6400126: LP_Wirbel_04
+    6400128: LP_Zapfen_01
+    6400130: LP_Zapfen_02
+    6400132: LP_Zaunstueck_01
+    6400134: LP_Zaunstueck_02
+    6400136: LP_Zaunstueck_03
+    6400138: LP_Zaunstueck_04
+    6400140: LP_Zaun
+    6400142: LP_Zauneckstueck
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

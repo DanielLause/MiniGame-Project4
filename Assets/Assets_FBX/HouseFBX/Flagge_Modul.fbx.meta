@@ -7,11 +7,21 @@ ModelImporter:
   fileIDToRecycleName:
     100000: Flagge_Modul
     100002: //RootNode
+    100004: House_Modul_Flagge_01
+    100006: Flagge_Klein
     400000: Flagge_Modul
     400002: //RootNode
+    400004: House_Modul_Flagge_01
+    400006: Flagge_Klein
     2300000: Flagge_Modul
+    2300002: House_Modul_Flagge_01
+    2300004: Flagge_Klein
     3300000: Flagge_Modul
+    3300002: House_Modul_Flagge_01
+    3300004: Flagge_Klein
     4300000: Flagge_Modul
+    4300002: House_Modul_Flagge_01
+    4300004: Flagge_Klein
   materials:
     importMaterials: 1
     materialName: 0
