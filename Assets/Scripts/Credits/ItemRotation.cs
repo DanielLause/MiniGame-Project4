@@ -6,6 +6,6 @@ public class ItemRotation : MonoBehaviour
 
     void Update()
     {
-        gameObject.transform.Rotate(1,1,1);
+        this.gameObject.transform.Rotate(1,1,1);
     }
 }
