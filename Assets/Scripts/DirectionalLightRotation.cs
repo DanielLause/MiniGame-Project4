@@ -2,7 +2,9 @@
 
 public class DirectionalLightRotation : MonoBehaviour
 {
-    public float RotationSpeed = -1;
+    public float RotationSpeedX = -1;
+
+
     private GameTime gameTime;
 
     private void Awake()
@@ -12,6 +14,6 @@ public class DirectionalLightRotation : MonoBehaviour
 
     private void Update()
     {
-        this.transform.Rotate(RotationSpeed * Time.deltaTime * gameTime.PlayTime, 0, 0);
+        this.transform.Rotate(RotationSpeedX * Time.deltaTime * gameTime.PlayTime, 0, 0);
     }
 }

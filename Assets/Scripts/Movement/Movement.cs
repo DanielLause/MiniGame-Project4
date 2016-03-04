@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
     private Rigidbody myRigid;
     private bool previouslyGrounded;
     private bool isGrounded;
+    private GameTime gameTime;
 
     [SerializeField]
     private CapsuleCollider m_Capsule;
@@ -25,47 +26,55 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         myRigid = transform.GetComponent<Rigidbody>();
+        gameTime = GameObject.Find("GlobalScripts").transform.GetComponent<GameTime>();
     }
 
     private void Update()
     {
-        transform.Rotate(0, Input.GetAxis("Mouse X") * RotateSpeed * Time.deltaTime, 0);
-
-        if (Input.GetButton("Run"))
-            speed = RunSpeed;
-        else
-            speed = MoveSpeed;
-
-        if (Input.GetButton("Jump") && isGrounded)
+        if (gameTime.PlayTime == 1)
         {
-            jump = true;
+
+            transform.Rotate(0, Input.GetAxis("Mouse X") * RotateSpeed * Time.deltaTime, 0);
+
+            if (Input.GetButton("Run"))
+                speed = RunSpeed;
+            else
+                speed = MoveSpeed;
+
+            if (Input.GetButton("Jump") && isGrounded)
+            {
+                jump = true;
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        GroundCheck();
-        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized * speed;
-
-        if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && !jumping)
+        if (gameTime.PlayTime == 1)
         {
-            if (myRigid.velocity.sqrMagnitude <
-                (speed * speed))
-            {
-                Vector3 desiredMove = transform.forward * input.y + transform.right * input.x;
-                desiredMove = Vector3.ProjectOnPlane(desiredMove, groundContactNormal).normalized;
 
-                desiredMove.x = desiredMove.x * speed;
-                desiredMove.z = desiredMove.z * speed;
-                desiredMove.y = desiredMove.y * speed;
+            GroundCheck();
+            Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized * speed;
+
+            if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && !jumping)
+            {
                 if (myRigid.velocity.sqrMagnitude <
                     (speed * speed))
                 {
-                    myRigid.AddForce(desiredMove, ForceMode.Impulse);
+                    Vector3 desiredMove = transform.forward * input.y + transform.right * input.x;
+                    desiredMove = Vector3.ProjectOnPlane(desiredMove, groundContactNormal).normalized;
+
+                    desiredMove.x = desiredMove.x * speed;
+                    desiredMove.z = desiredMove.z * speed;
+                    desiredMove.y = desiredMove.y * speed;
+                    if (myRigid.velocity.sqrMagnitude <
+                        (speed * speed))
+                    {
+                        myRigid.AddForce(desiredMove, ForceMode.Impulse);
+                    }
                 }
             }
         }
-
         if (isGrounded)
         {
             myRigid.drag = 5f;
