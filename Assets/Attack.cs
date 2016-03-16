@@ -10,7 +10,6 @@ public class Attack : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-            print("PLAYER");
             otherHealth = other.gameObject.GetComponent<Health>();
             otherHealth.RemoveHealth(Damage);
         }
