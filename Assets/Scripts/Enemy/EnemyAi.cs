@@ -28,16 +28,18 @@ public class EnemyAi : MonoBehaviour
     private NavMeshPath path;
     private NavMeshHit navHit;
     private RaycastHit rayHit;
+    private GameTime gameTime;
 
     private bool calculatingSun = false;
     private bool inShadow = false;
     private float pathDistance;
     private float sunTime;
     private Vector3 lookTarget;
+    
 
     void Awake()
     {
-
+        gameTime = GameObject.Find("GlobalScripts").GetComponent<GameTime>();
         waypointContainer = GameObject.Find("WaypointContainer").transform;
         sun = GameObject.Find("Directional Light");
         player = GameObject.Find("Player").transform;
@@ -149,7 +151,7 @@ public class EnemyAi : MonoBehaviour
         {
             yield return fixedUpdateWait;
             progress += myAgent.speed * Time.fixedDeltaTime;
-            var movement = Vector3.ClampMagnitude(sample(corner, progress) - transform.position, myAgent.speed * Time.fixedDeltaTime);
+            var movement = Vector3.ClampMagnitude(sample(corner, progress) - transform.position, myAgent.speed * Time.fixedDeltaTime * gameTime.PlayTime);
             myAgent.Move(Vector3.ClampMagnitude(movement, length - progress));
             if (progress >= RecalcThreshold)
             {
