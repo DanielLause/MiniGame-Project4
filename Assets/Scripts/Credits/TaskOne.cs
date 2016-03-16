@@ -3,10 +3,8 @@ using System.Collections;
 
 public class TaskOne : MonoBehaviour
 {
-
     [SerializeField]
     private GameObject taskOne;
-
 
     void OnCollisionEnter(Collision other)
     {
