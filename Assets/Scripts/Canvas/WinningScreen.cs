@@ -8,16 +8,15 @@ public class WinningScreen : MonoBehaviour
     [SerializeField]
     private GameObject winCamera;
 
-    //[SerializeField]
-    //private GameObject winScreen;
-
     public int MoveSpeed;
-    private bool Win = false;
+    private bool win = false;
+
+    private GameObject player;
 
     private void Awake()
     {
         winCamera.SetActive(false);
-        //winScreen.SetActive(false);
+        player = GameObject.Find("Player");
     }
 
     private void OnCollisionEnter(Collision other)
@@ -25,15 +24,15 @@ public class WinningScreen : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Destroy(mainCamera);
-            //winScreen.SetActive(true);
+            Destroy(player);
             winCamera.SetActive(true);
-            Win = true;
+            win = true;
         }
     }
 
     private void Update()
     {
-        if (Win)
+        if (win)
         {
             this.gameObject.transform.Translate(0, MoveSpeed * Time.deltaTime, 0);
         }
