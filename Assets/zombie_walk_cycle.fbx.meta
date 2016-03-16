@@ -1,0 +1,233 @@
+fileFormatVersion: 2
+guid: 19eb71845b999a842b5a8c01879f3906
+timeCreated: 1458154595
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: arm_l_bin_1
+    100002: arm_l_bin_2
+    100004: arm_l_bin_wrist
+    100006: arm_l_roll_bin
+    100008: arm_r_bin_1
+    100010: arm_r_bin_2
+    100012: arm_r_bin_wrist
+    100014: arm_r_roll_bin
+    100016: clavicula_l_bin
+    100018: clavicula_r_bin
+    100020: eye_l_
+    100022: eye_l_ 1
+    100024: eye_l_ 2
+    100026: eye_l_bin
+    100028: eye_r_
+    100030: eye_r_ 1
+    100032: eye_r_ 2
+    100034: eye_r_bin
+    100036: eyelid_down_l_bin
+    100038: eyelid_down_r_bin
+    100040: eyelid_up_l_bin
+    100042: eyelid_up_r_bin
+    100044: foot_l_bin01
+    100046: foot_l_bin02
+    100048: foot_l_tip
+    100050: foot_r_bin01
+    100052: foot_r_bin02
+    100054: foot_r_tip
+    100056: head_
+    100058: Head_bin
+    100060: index_l_bin_1
+    100062: index_l_bin_2
+    100064: index_l_bin_3
+    100066: index_r_bin_1
+    100068: index_r_bin_2
+    100070: index_r_bin_3
+    100072: jaw_bin
+    100074: joint9
+    100076: leg_l_bin01
+    100078: leg_l_bin02
+    100080: leg_r_bin01
+    100082: leg_r_bin02
+    100084: middle_l_bin_1
+    100086: middle_l_bin_2
+    100088: middle_l_bin_3
+    100090: middle_r_bin_1
+    100092: middle_r_bin_2
+    100094: middle_r_bin_3
+    100096: neck_bin_01
+    100098: neck_bin_02
+    100100: neck_bin_03
+    100102: neck_bin_04
+    100104: Pelvis_bin
+    100106: pinky_l_bin_1
+    100108: pinky_l_bin_2
+    100110: pinky_l_bin_3
+    100112: pinky_l_in_hand_bin
+    100114: pinky_r_bin_1
+    100116: pinky_r_bin_2
+    100118: pinky_r_bin_3
+    100120: pinky_r_in_hand_bin
+    100122: ring_l_bin_1
+    100124: ring_l_bin_2
+    100126: ring_l_bin_3
+    100128: ring_r_bin_1
+    100130: ring_r_bin_2
+    100132: ring_r_bin_3
+    100134: spine_bin_01
+    100136: spine_bin_02
+    100138: spine_bin_03
+    100140: spine_bin_04
+    100142: thumb_L_bin_1
+    100144: thumb_L_bin_1 1
+    100146: thumb_L_bin_2
+    100148: thumb_L_bin_2 1
+    100150: thumb_L_bin_3
+    100152: thumb_L_bin_3 1
+    100154: zombie_mesh:Mesh
+    100156: //RootNode
+    400000: arm_l_bin_1
+    400002: arm_l_bin_2
+    400004: arm_l_bin_wrist
+    400006: arm_l_roll_bin
+    400008: arm_r_bin_1
+    400010: arm_r_bin_2
+    400012: arm_r_bin_wrist
+    400014: arm_r_roll_bin
+    400016: clavicula_l_bin
+    400018: clavicula_r_bin
+    400020: eye_l_
+    400022: eye_l_ 1
+    400024: eye_l_ 2
+    400026: eye_l_bin
+    400028: eye_r_
+    400030: eye_r_ 1
+    400032: eye_r_ 2
+    400034: eye_r_bin
+    400036: eyelid_down_l_bin
+    400038: eyelid_down_r_bin
+    400040: eyelid_up_l_bin
+    400042: eyelid_up_r_bin
+    400044: foot_l_bin01
+    400046: foot_l_bin02
+    400048: foot_l_tip
+    400050: foot_r_bin01
+    400052: foot_r_bin02
+    400054: foot_r_tip
+    400056: head_
+    400058: Head_bin
+    400060: index_l_bin_1
+    400062: index_l_bin_2
+    400064: index_l_bin_3
+    400066: index_r_bin_1
+    400068: index_r_bin_2
+    400070: index_r_bin_3
+    400072: jaw_bin
+    400074: joint9
+    400076: leg_l_bin01
+    400078: leg_l_bin02
+    400080: leg_r_bin01
+    400082: leg_r_bin02
+    400084: middle_l_bin_1
+    400086: middle_l_bin_2
+    400088: middle_l_bin_3
+    400090: middle_r_bin_1
+    400092: middle_r_bin_2
+    400094: middle_r_bin_3
+    400096: neck_bin_01
+    400098: neck_bin_02
+    400100: neck_bin_03
+    400102: neck_bin_04
+    400104: Pelvis_bin
+    400106: pinky_l_bin_1
+    400108: pinky_l_bin_2
+    400110: pinky_l_bin_3
+    400112: pinky_l_in_hand_bin
+    400114: pinky_r_bin_1
+    400116: pinky_r_bin_2
+    400118: pinky_r_bin_3
+    400120: pinky_r_in_hand_bin
+    400122: ring_l_bin_1
+    400124: ring_l_bin_2
+    400126: ring_l_bin_3
+    400128: ring_r_bin_1
+    400130: ring_r_bin_2
+    400132: ring_r_bin_3
+    400134: spine_bin_01
+    400136: spine_bin_02
+    400138: spine_bin_03
+    400140: spine_bin_04
+    400142: thumb_L_bin_1
+    400144: thumb_L_bin_1 1
+    400146: thumb_L_bin_2
+    400148: thumb_L_bin_2 1
+    400150: thumb_L_bin_3
+    400152: thumb_L_bin_3 1
+    400154: zombie_mesh:Mesh
+    400156: //RootNode
+    4300000: zombie_mesh:Mesh
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: zombie_mesh:Mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
