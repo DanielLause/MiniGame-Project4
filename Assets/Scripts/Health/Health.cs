@@ -10,21 +10,28 @@ public class Health : MonoBehaviour {
     public bool isDead = false;
     private bool deadTimer = true;
 
-    //private GameObject lose_Screen;
+    private GameObject lose_Screen;
 
     void Awake()
     {
         CurrentHealth = MaxHealth;
-
+    }
+    void Start()
+    {
+        if (Player)
+        {
+        lose_Screen = GameObject.Find("Lose_Screen");
+        lose_Screen.SetActive(false);
+        }
     }
     void Update()
     {
-        if (isDead)
+        if (isDead && deadTimer)
         {
-            Destroy(this.gameObject);
-            //deadTimer = false;
-            //StartCoroutine(DestroyThisGameObject(DestroyTime));
-            
+            //Destroy(this.gameObject);
+            deadTimer = false;
+            StartCoroutine(DestroyThisGameObject(DestroyTime));
+
         }
     }
     public void RemoveHealth(float removeValue)
@@ -54,11 +61,18 @@ public class Health : MonoBehaviour {
 
     IEnumerator DestroyThisGameObject(float time)
     {
+        if (!Player)
+        {
+            GetComponent<NavMeshAgent>().speed = 0f;
+        }
         yield return new WaitForSeconds(time);
 
         if (Player)
-            //lose_Screen.gameObject.SetActive(true);
+        {
+            lose_Screen.gameObject.SetActive(true);
+        }
 
-        GameObject.Destroy(this);
+
+        GameObject.Destroy(this.gameObject);
     }
 }
