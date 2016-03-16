@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class WinningScreen : MonoBehaviour
 {
@@ -8,15 +10,27 @@ public class WinningScreen : MonoBehaviour
     [SerializeField]
     private GameObject winCamera;
 
-    public int MoveSpeed;
-    private bool win = false;
+    [SerializeField]
+    private GameObject HUD;
 
+    [SerializeField]
+    private GameObject CrossHair;
+
+    public int MoveSpeed;
+    
+    private bool win = false;
     private GameObject player;
 
     private void Awake()
     {
         winCamera.SetActive(false);
         player = GameObject.Find("Player");
+    }
+
+    private IEnumerator creditDelay()
+    {
+        yield return new WaitForSeconds(12f);
+        SceneManager.LoadScene(0);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -27,6 +41,9 @@ public class WinningScreen : MonoBehaviour
             Destroy(player);
             winCamera.SetActive(true);
             win = true;
+            StartCoroutine(creditDelay());
+            CrossHair.SetActive(false);
+            HUD.SetActive(false);
         }
     }
 

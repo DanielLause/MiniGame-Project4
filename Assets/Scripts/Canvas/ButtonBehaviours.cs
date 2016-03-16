@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class ButtonBehaviours : MonoBehaviour
 {
     private Transform credits;
     private Transform options;
     private Transform startScreen;
-
     private GameObject player;
     private GameTime gameTime;
+    private GameObject globalScripts;
+
 
     [Tooltip("Makes the Mouse Cursor invisible if box is checked.")]
     public bool CursorIsVisible = false;
@@ -23,10 +25,12 @@ public class ButtonBehaviours : MonoBehaviour
         credits = startScreen.FindChild("Credit_Image");
         credits.gameObject.SetActive(false);
 
+        globalScripts = GameObject.Find("GlobalScripts");
+
         player = GameObject.Find("Player");
 
         gameTime = GameObject.Find("GlobalScripts").transform.GetComponent<GameTime>();
-
+         
     }
 
     // Game Start
@@ -35,6 +39,8 @@ public class ButtonBehaviours : MonoBehaviour
         startScreen.gameObject.SetActive(false);
         Cursor.visible = CursorIsVisible;
         gameTime.PlayTime = 1;
+        AudioSource audio = globalScripts.GetComponent<AudioSource>();
+        audio.Play();
     }
 
     // Credits
