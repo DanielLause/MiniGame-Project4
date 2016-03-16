@@ -17,6 +17,7 @@ public class Shoot : MonoBehaviour
     public float MinDelayTime = 0.4f;
     public int MaxBulletAmount = 100;
     public float ReloadTime = 1;
+    public float Damage = 10;
     public bool CanShoot = true;
     public bool Reload = false;
 
