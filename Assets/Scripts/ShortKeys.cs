@@ -5,7 +5,15 @@ public class ShortKeys : MonoBehaviour
 {
     [SerializeField]
     private GameTime gametime;
+
+    private Health hp;
+
     private bool cheat = false;
+
+    private void Awake()
+    {
+        hp = gameObject.GetComponent<Health>();
+    }
 
     private void Update()
     {
@@ -32,7 +40,10 @@ public class ShortKeys : MonoBehaviour
         }
         if (cheat)
         {
-
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                hp.AddHealth(999);
+            }
         }
     }
 }
