@@ -8,17 +8,298 @@ ModelImporter:
     100000: //RootNode
     100002: House_Modul_002 1
     100004: Spawnbox_Inhouse_02
+    100006: Window01
+    100008: Window02
+    100010: Window03
+    100012: Window04
+    100014: Window05
+    100016: Window06
+    100018: Window07
+    100020: Window08
+    100022: Window09
+    100024: Window10
+    100026: Window11
+    100028: Window12
+    100030: Window13
+    100032: Window14
+    100034: Window15
+    100036: Window16
+    100038: Window17
+    100040: Window18
+    100042: Window19
+    100044: Window20
+    100046: Window21
+    100048: Window22
+    100050: Window23
+    100052: Window24
+    100054: Window25
+    100056: Window26
+    100058: Window27
+    100060: Window28
+    100062: Window29
+    100064: Window30
+    100066: Window31
+    100068: Window32
+    100070: Window33
+    100072: Window34
+    100074: Window35
+    100076: Window36
+    100078: Window37
+    100080: Window38
+    100082: Window39
+    100084: Windows
+    100086: Windows_02
+    100088: House_Modul_02 1
+    100090: House_Modul_02_LOD0
+    100092: House_Modul_02_LOD1
+    100094: House_Modul_02_LOD2
+    100096: House_Collider
+    100098: Stairs_Collider
     400000: //RootNode
     400002: House_Modul_002 1
     400004: Spawnbox_Inhouse_02
+    400006: Window01
+    400008: Window02
+    400010: Window03
+    400012: Window04
+    400014: Window05
+    400016: Window06
+    400018: Window07
+    400020: Window08
+    400022: Window09
+    400024: Window10
+    400026: Window11
+    400028: Window12
+    400030: Window13
+    400032: Window14
+    400034: Window15
+    400036: Window16
+    400038: Window17
+    400040: Window18
+    400042: Window19
+    400044: Window20
+    400046: Window21
+    400048: Window22
+    400050: Window23
+    400052: Window24
+    400054: Window25
+    400056: Window26
+    400058: Window27
+    400060: Window28
+    400062: Window29
+    400064: Window30
+    400066: Window31
+    400068: Window32
+    400070: Window33
+    400072: Window34
+    400074: Window35
+    400076: Window36
+    400078: Window37
+    400080: Window38
+    400082: Window39
+    400084: Windows
+    400086: Windows_02
+    400088: House_Modul_02 1
+    400090: House_Modul_02_LOD0
+    400092: House_Modul_02_LOD1
+    400094: House_Modul_02_LOD2
+    400096: House_Collider
+    400098: Stairs_Collider
     2300000: House_Modul_002 1
     2300002: Spawnbox_Inhouse_02
+    2300004: Window01
+    2300006: Window02
+    2300008: Window03
+    2300010: Window04
+    2300012: Window05
+    2300014: Window06
+    2300016: Window07
+    2300018: Window08
+    2300020: Window09
+    2300022: Window10
+    2300024: Window11
+    2300026: Window12
+    2300028: Window13
+    2300030: Window14
+    2300032: Window15
+    2300034: Window16
+    2300036: Window17
+    2300038: Window18
+    2300040: Window19
+    2300042: Window20
+    2300044: Window21
+    2300046: Window22
+    2300048: Window23
+    2300050: Window24
+    2300052: Window25
+    2300054: Window26
+    2300056: Window27
+    2300058: Window28
+    2300060: Window29
+    2300062: Window30
+    2300064: Window31
+    2300066: Window32
+    2300068: Window33
+    2300070: Window34
+    2300072: Window35
+    2300074: Window36
+    2300076: Window37
+    2300078: Window38
+    2300080: Window39
+    2300082: Windows
+    2300084: Windows_02
+    2300086: House_Modul_02 1
+    2300088: House_Modul_02_LOD0
+    2300090: House_Modul_02_LOD1
+    2300092: House_Modul_02_LOD2
+    2300094: House_Collider
+    2300096: Stairs_Collider
     3300000: House_Modul_002 1
     3300002: Spawnbox_Inhouse_02
+    3300004: Window01
+    3300006: Window02
+    3300008: Window03
+    3300010: Window04
+    3300012: Window05
+    3300014: Window06
+    3300016: Window07
+    3300018: Window08
+    3300020: Window09
+    3300022: Window10
+    3300024: Window11
+    3300026: Window12
+    3300028: Window13
+    3300030: Window14
+    3300032: Window15
+    3300034: Window16
+    3300036: Window17
+    3300038: Window18
+    3300040: Window19
+    3300042: Window20
+    3300044: Window21
+    3300046: Window22
+    3300048: Window23
+    3300050: Window24
+    3300052: Window25
+    3300054: Window26
+    3300056: Window27
+    3300058: Window28
+    3300060: Window29
+    3300062: Window30
+    3300064: Window31
+    3300066: Window32
+    3300068: Window33
+    3300070: Window34
+    3300072: Window35
+    3300074: Window36
+    3300076: Window37
+    3300078: Window38
+    3300080: Window39
+    3300082: Windows
+    3300084: Windows_02
+    3300086: House_Modul_02 1
+    3300088: House_Modul_02_LOD0
+    3300090: House_Modul_02_LOD1
+    3300092: House_Modul_02_LOD2
+    3300094: House_Collider
+    3300096: Stairs_Collider
     4300000: House_Modul_002
     4300002: Spawnbox_Inhouse_02
+    4300004: Window01
+    4300006: Window02
+    4300008: Window03
+    4300010: Window04
+    4300012: Window05
+    4300014: Window06
+    4300016: Window07
+    4300018: Window08
+    4300020: Window09
+    4300022: Window10
+    4300024: Window11
+    4300026: Window12
+    4300028: Window13
+    4300030: Window14
+    4300032: Window15
+    4300034: Window16
+    4300036: Window17
+    4300038: Window18
+    4300040: Window19
+    4300042: Window20
+    4300044: Window21
+    4300046: Window22
+    4300048: Window23
+    4300050: Window24
+    4300052: Window25
+    4300054: Window26
+    4300056: Window27
+    4300058: Window28
+    4300060: Window29
+    4300062: Window30
+    4300064: Window31
+    4300066: Window32
+    4300068: Window33
+    4300070: Window34
+    4300072: Window35
+    4300074: Window36
+    4300076: Window37
+    4300078: Window38
+    4300080: Window39
+    4300082: Windows
+    4300084: Windows_02
+    4300086: House_Modul_02
+    4300088: House_Modul_02_LOD0
+    4300090: House_Modul_02_LOD1
+    4300092: House_Modul_02_LOD2
+    4300094: House_Collider
+    4300096: Stairs_Collider
     6400000: House_Modul_002 1
     6400002: Spawnbox_Inhouse_02
+    6400004: Window01
+    6400006: Window02
+    6400008: Window03
+    6400010: Window04
+    6400012: Window05
+    6400014: Window06
+    6400016: Window07
+    6400018: Window08
+    6400020: Window09
+    6400022: Window10
+    6400024: Window11
+    6400026: Window12
+    6400028: Window13
+    6400030: Window14
+    6400032: Window15
+    6400034: Window16
+    6400036: Window17
+    6400038: Window18
+    6400040: Window19
+    6400042: Window20
+    6400044: Window21
+    6400046: Window22
+    6400048: Window23
+    6400050: Window24
+    6400052: Window25
+    6400054: Window26
+    6400056: Window27
+    6400058: Window28
+    6400060: Window29
+    6400062: Window30
+    6400064: Window31
+    6400066: Window32
+    6400068: Window33
+    6400070: Window34
+    6400072: Window35
+    6400074: Window36
+    6400076: Window37
+    6400078: Window38
+    6400080: Window39
+    6400082: Windows
+    6400084: Windows_02
+    6400086: House_Modul_02 1
+    6400088: House_Modul_02_LOD0
+    6400090: House_Modul_02_LOD1
+    6400092: House_Modul_02_LOD2
+    20500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -42,10 +323,13 @@ ModelImporter:
     clipAnimations: []
     isReadable: 1
   meshes:
-    lODScreenPercentages: []
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.01
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -61,7 +345,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 3
+    tangentImportMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

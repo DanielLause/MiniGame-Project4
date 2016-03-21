@@ -10,23 +10,86 @@ ModelImporter:
     100004: House_Modul_006 1_MeshPart0
     100006: House_Modul_006 1_MeshPart1
     100008: Spawnbox_Inhouse_06
+    100010: Windows_06
+    100012: House_Modul_06 1
+    100014: House_Modul_06 1_MeshPart0
+    100016: House_Modul_06 1_MeshPart1
+    100018: Windows
+    100020: House_Modul_06_LOD0
+    100022: House_Modul_06_LOD0_MeshPart0
+    100024: House_Modul_06_LOD0_MeshPart1
+    100026: House_Modul_06_LOD1
+    100028: House_Modul_06_LOD2
+    100030: House_Collider
+    100032: Stairs_Collider
     400000: //RootNode
     400002: House_Modul_006 1
     400004: House_Modul_006 1_MeshPart0
     400006: House_Modul_006 1_MeshPart1
     400008: Spawnbox_Inhouse_06
+    400010: Windows_06
+    400012: House_Modul_06 1
+    400014: House_Modul_06 1_MeshPart0
+    400016: House_Modul_06 1_MeshPart1
+    400018: Windows
+    400020: House_Modul_06_LOD0
+    400022: House_Modul_06_LOD0_MeshPart0
+    400024: House_Modul_06_LOD0_MeshPart1
+    400026: House_Modul_06_LOD1
+    400028: House_Modul_06_LOD2
+    400030: House_Collider
+    400032: Stairs_Collider
     2300000: House_Modul_006 1_MeshPart0
     2300002: House_Modul_006 1_MeshPart1
     2300004: Spawnbox_Inhouse_06
+    2300006: Windows_06
+    2300008: House_Modul_06 1_MeshPart0
+    2300010: House_Modul_06 1_MeshPart1
+    2300012: Windows
+    2300014: House_Modul_06_LOD0_MeshPart0
+    2300016: House_Modul_06_LOD0_MeshPart1
+    2300018: House_Modul_06_LOD1
+    2300020: House_Modul_06_LOD2
+    2300022: House_Collider
+    2300024: Stairs_Collider
     3300000: House_Modul_006 1_MeshPart0
     3300002: House_Modul_006 1_MeshPart1
     3300004: Spawnbox_Inhouse_06
+    3300006: Windows_06
+    3300008: House_Modul_06 1_MeshPart0
+    3300010: House_Modul_06 1_MeshPart1
+    3300012: Windows
+    3300014: House_Modul_06_LOD0_MeshPart0
+    3300016: House_Modul_06_LOD0_MeshPart1
+    3300018: House_Modul_06_LOD1
+    3300020: House_Modul_06_LOD2
+    3300022: House_Collider
+    3300024: Stairs_Collider
     4300000: House_Modul_006_MeshPart0
     4300002: House_Modul_006_MeshPart1
     4300004: Spawnbox_Inhouse_06
+    4300006: Windows_06
+    4300008: House_Modul_06_MeshPart0
+    4300010: House_Modul_06_MeshPart1
+    4300012: Windows
+    4300014: House_Modul_06_LOD0_MeshPart0
+    4300016: House_Modul_06_LOD0_MeshPart1
+    4300018: House_Modul_06_LOD1
+    4300020: House_Modul_06_LOD2
+    4300022: House_Collider
+    4300024: Stairs_Collider
     6400000: House_Modul_006 1_MeshPart0
     6400002: House_Modul_006 1_MeshPart1
     6400004: Spawnbox_Inhouse_06
+    6400006: Windows_06
+    6400008: House_Modul_06 1_MeshPart0
+    6400010: House_Modul_06 1_MeshPart1
+    6400012: Windows
+    6400014: House_Modul_06_LOD0_MeshPart0
+    6400016: House_Modul_06_LOD0_MeshPart1
+    6400018: House_Modul_06_LOD1
+    6400020: House_Modul_06_LOD2
+    20500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -50,10 +113,13 @@ ModelImporter:
     clipAnimations: []
     isReadable: 1
   meshes:
-    lODScreenPercentages: []
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.01
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -69,7 +135,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 3
+    tangentImportMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
