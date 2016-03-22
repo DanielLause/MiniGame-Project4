@@ -16,10 +16,17 @@ public class WinningScreen : MonoBehaviour
     [SerializeField]
     private GameObject CrossHair;
 
+    [SerializeField]
+    private GameObject SpaceShipOpen;
+
+    [SerializeField]
+    private GameObject SpaceShipClosed;
+
     public int MoveSpeed;
     
     private bool win = false;
     private GameObject player;
+
 
     private void Awake()
     {
