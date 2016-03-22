@@ -30,7 +30,8 @@ public class ButtonBehaviours : MonoBehaviour
         player = GameObject.Find("Player");
 
         gameTime = GameObject.Find("GlobalScripts").transform.GetComponent<GameTime>();
-         
+
+        Cursor.visible = true;
     }
 
     // Game Start
