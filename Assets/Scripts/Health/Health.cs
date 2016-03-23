@@ -12,15 +12,9 @@ public class Health : MonoBehaviour {
 
     private GameObject lose_Screen;
 
-    [SerializeField]
-    private GameObject zombieRagdoll;
-    [SerializeField]
-    private GameObject zombie_walk_cycle;
-
     void Awake()
     {
         CurrentHealth = MaxHealth;
-        zombieRagdoll.SetActive(false);
     }
     void Start()
     {
@@ -37,8 +31,7 @@ public class Health : MonoBehaviour {
             //Destroy(this.gameObject);
             deadTimer = false;
             StartCoroutine(DestroyThisGameObject(DestroyTime));
-            zombie_walk_cycle.SetActive(false);
-            zombieRagdoll.SetActive(true);
+
         }
     }
     public void RemoveHealth(float removeValue)
