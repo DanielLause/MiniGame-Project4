@@ -71,6 +71,7 @@ public class Health : MonoBehaviour
             transform.FindChild("zombie_walk_cycle").gameObject.SetActive(false);
             transform.FindChild("zombie_Ragdoll_final").gameObject.SetActive(true);
             GetComponent<NavMeshAgent>().speed = 0f;
+            GetComponent<Attack>().Damage = 0;
         }
         yield return new WaitForSeconds(time);
 
