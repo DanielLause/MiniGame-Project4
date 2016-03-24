@@ -19,6 +19,8 @@ public class EnemyAi : MonoBehaviour
     [Range(0, 50)]
     public float RecalcThreshold;
 
+
+    public float RotationSpeed;
     private Transform waypointContainer;
 
     private Transform[] wayPoints;
@@ -50,27 +52,24 @@ public class EnemyAi : MonoBehaviour
     {
         StartCoroutine(agentFollow());
     }
-
     IEnumerator getPath(Vector3 target)
     {
         lookTarget = target;
         var waitUpdate = new WaitForEndOfFrame();
         myAgent.SetDestination(target);
-        transform.LookAt(lookTarget);
         while (myAgent.pathPending)
             yield return waitUpdate;
         myAgent.Stop();
         path = myAgent.path;
-        transform.LookAt(lookTarget);
 
     }
 
     IEnumerator agentFollow()
     {
-        transform.LookAt(lookTarget);
+
         if (Vector3.Distance(player.position, transform.position) < ActivateThreshhold)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForEndOfFrame();
             StartCoroutine(agentFollow());
         }
         else
@@ -153,6 +152,11 @@ public class EnemyAi : MonoBehaviour
             progress += myAgent.speed * Time.fixedDeltaTime;
             var movement = Vector3.ClampMagnitude(sample(corner, progress) - transform.position, myAgent.speed * Time.fixedDeltaTime * gameTime.PlayTime);
             myAgent.Move(Vector3.ClampMagnitude(movement, length - progress));
+
+            Vector3 direction = (lookTarget - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, RotationSpeed);
+
             if (progress >= RecalcThreshold)
             {
                 if (!myAgent.pathPending)
@@ -187,7 +191,7 @@ public class EnemyAi : MonoBehaviour
         while (Vector3.Distance(transform.position, position) > 1)
         {
             yield return fixedUpdateWait;
-            myAgent.Move(Vector3.ClampMagnitude((position - transform.position).normalized * myAgent.speed * Time.fixedDeltaTime, Vector3.Magnitude(position - transform.position)));
+            //myAgent.Move(Vector3.ClampMagnitude((position - transform.position).normalized * myAgent.speed * Time.fixedDeltaTime, Vector3.Magnitude(position - transform.position)));
 
         }
     }
