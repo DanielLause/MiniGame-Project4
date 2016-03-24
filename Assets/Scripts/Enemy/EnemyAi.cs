@@ -1,24 +1,26 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System;
-using System.Reflection;
-using System.Runtime.InteropServices;
+using UnityEngine;
 
 public class EnemyAi : MonoBehaviour
 {
     [Range(0, 10)]
     public float ActivateThreshhold;
+
     [Range(0, 50)]
     public float Treshhold;
+
     [Range(1, 50)]
     public float LowTreshhold;
+
     [Range(0, 1)]
     public float SunThreshold;
+
     [Range(0, 50)]
     public float RecalcThreshold;
 
+    public float RotationSpeed;
     private Transform waypointContainer;
 
     private Transform[] wayPoints;
@@ -35,9 +37,9 @@ public class EnemyAi : MonoBehaviour
     private float pathDistance;
     private float sunTime;
     private Vector3 lookTarget;
-    
 
-    void Awake()
+    Coroutine run;
+    private void Awake()
     {
         gameTime = GameObject.Find("GlobalScripts").GetComponent<GameTime>();
         waypointContainer = GameObject.Find("WaypointContainer").transform;
@@ -46,42 +48,42 @@ public class EnemyAi : MonoBehaviour
         myAgent = GetComponent<NavMeshAgent>();
         wayPoints = waypointContainer.Cast<Transform>().ToArray();
     }
-    void Start()
+
+    private void Start()
     {
         StartCoroutine(agentFollow());
     }
 
-    IEnumerator getPath(Vector3 target)
+    private IEnumerator getPath(Vector3 target)
     {
         lookTarget = target;
         var waitUpdate = new WaitForEndOfFrame();
         myAgent.SetDestination(target);
-        transform.LookAt(lookTarget);
         while (myAgent.pathPending)
             yield return waitUpdate;
         myAgent.Stop();
         path = myAgent.path;
-        transform.LookAt(lookTarget);
-
     }
 
-    IEnumerator agentFollow()
+    private IEnumerator agentFollow()
     {
-        transform.LookAt(lookTarget);
         if (Vector3.Distance(player.position, transform.position) < ActivateThreshhold)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForEndOfFrame();
             StartCoroutine(agentFollow());
         }
         else
         {
+            if (run != null)
+                StopCoroutine(run);
+
             yield return StartCoroutine(getPath(player.position));
             yield return StartCoroutine(calcSun());
-            yield return StartCoroutine(Run(0));
+            yield return run = StartCoroutine(Run(0));
         }
     }
 
-    float getLength(NavMeshPath path)
+    private float getLength(NavMeshPath path)
     {
         float length = 0;
         for (int i = 0; i < path.corners.Length - 1; i++)
@@ -91,7 +93,7 @@ public class EnemyAi : MonoBehaviour
         return length;
     }
 
-    Vector3 sample(Vector3[] path, float t)
+    private Vector3 sample(Vector3[] path, float t)
     {
         for (int i = 0; i < path.Length - 1; i++)
         {
@@ -105,7 +107,7 @@ public class EnemyAi : MonoBehaviour
         return path[path.Length - 1];
     }
 
-    IEnumerator calcSun()
+    private IEnumerator calcSun()
     {
         calculatingSun = true;
 
@@ -136,7 +138,7 @@ public class EnemyAi : MonoBehaviour
         calculatingSun = false;
     }
 
-    IEnumerator Run(float initialProgress)
+    private IEnumerator Run(float initialProgress)
     {
         var fixedUpdateWait = new WaitForFixedUpdate();
 
@@ -147,12 +149,18 @@ public class EnemyAi : MonoBehaviour
         float breakProgress = 0;
         bool searchingPath = false;
         bool waitingForSun = false;
+        var tempLook = lookTarget;
         while (progress < length - 1)
         {
             yield return fixedUpdateWait;
             progress += myAgent.speed * Time.fixedDeltaTime;
             var movement = Vector3.ClampMagnitude(sample(corner, progress) - transform.position, myAgent.speed * Time.fixedDeltaTime * gameTime.PlayTime);
             myAgent.Move(Vector3.ClampMagnitude(movement, length - progress));
+
+            Vector3 direction = (lookTarget - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, RotationSpeed);
+
             if (progress >= RecalcThreshold)
             {
                 if (!myAgent.pathPending)
@@ -170,7 +178,7 @@ public class EnemyAi : MonoBehaviour
                     }
                     else if (!calculatingSun)
                     {
-                        StartCoroutine(Run(0));
+                        run = StartCoroutine(Run(0));
                         yield break;
                     }
                 }
@@ -188,15 +196,13 @@ public class EnemyAi : MonoBehaviour
         {
             yield return fixedUpdateWait;
             myAgent.Move(Vector3.ClampMagnitude((position - transform.position).normalized * myAgent.speed * Time.fixedDeltaTime, Vector3.Magnitude(position - transform.position)));
-
         }
     }
 
-    bool checkSun(Vector3 position)
+    private bool checkSun(Vector3 position)
     {
         Physics.Raycast(position, -sun.transform.forward, out rayHit);
 
         return rayHit.transform == null;
     }
-
 }
