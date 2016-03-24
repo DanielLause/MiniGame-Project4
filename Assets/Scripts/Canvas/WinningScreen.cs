@@ -26,10 +26,10 @@ public class WinningScreen : MonoBehaviour
     private GameObject CrossHair;
 
     [SerializeField]
-    private GameObject SpaceShipOpen;
+    private GameObject SpaceShipClosed;
 
     [SerializeField]
-    private GameObject SpaceShipClosed;
+    private float shipBoostTimer;
 
     public int MoveSpeed;
     
@@ -45,7 +45,7 @@ public class WinningScreen : MonoBehaviour
 
     private IEnumerator creditDelay()
     {
-        yield return new WaitForSeconds(12f);
+        yield return new WaitForSeconds(10f);
         SceneManager.LoadScene(0);
     }
 
@@ -67,7 +67,18 @@ public class WinningScreen : MonoBehaviour
     {
         if (win)
         {
-            this.gameObject.transform.Translate(0, MoveSpeed * Time.deltaTime, 0);
+            GetComponent<MeshRenderer>().enabled = false;
+            SpaceShipClosed.SetActive(true);
+            winCamera.GetComponent<LookAt>().enabled = true;
+            SpaceShipClosed.transform.Translate(0, MoveSpeed * Time.deltaTime, 0);
+            StartCoroutine(shipSpeed(shipBoostTimer));
         }
+
+    }
+    IEnumerator shipSpeed(float time)
+    {
+        yield return new WaitForSeconds(time);
+        MoveSpeed += 5;
+        StartCoroutine(shipSpeed(shipBoostTimer));
     }
 }
