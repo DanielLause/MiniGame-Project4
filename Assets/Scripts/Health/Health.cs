@@ -28,7 +28,6 @@ public class Health : MonoBehaviour {
     {
         if (isDead && deadTimer)
         {
-            //Destroy(this.gameObject);
             deadTimer = false;
             StartCoroutine(DestroyThisGameObject(DestroyTime));
 
@@ -63,6 +62,8 @@ public class Health : MonoBehaviour {
     {
         if (!Player)
         {
+            transform.FindChild("zombie_walk_cycle").gameObject.SetActive(false);
+            transform.FindChild("zombie_Ragdoll_final").gameObject.SetActive(true);
             GetComponent<NavMeshAgent>().speed = 0f;
         }
         yield return new WaitForSeconds(time);
