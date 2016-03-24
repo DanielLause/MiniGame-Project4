@@ -1,5 +1,5 @@
 Nicht vom Team erstellte Assets und Scripts:
 
-Die Scripts "Bloom And Flares" und "Antialiasing" (Selbsterklärend)
+Die Scripts "Bloom And Flares" und "Antialiasing", scripts die den Post prozessing effekt Bloom And Flares und Antialiasing unterstüzen. 
 
-Das Script "Lightening Script". Ein Script dasauf der Waffe liegt, und zuständig für die Line Renderings im bezug mit der waffe ist.
+Das Script "Lightening Script". Ein Script das auf der Waffe liegt, und zuständig für die Line Renderings im bezug mit der waffe ist.
