@@ -1,4 +1,13 @@
-﻿using System;
+﻿//////////////////////////////////////////////
+///                                        ///
+///         Last Day - Source Code         ///
+///                                        ///
+///    Lead Programmer   Second Programmer ///
+///      Daniel Lause       Julian Hopp    ///
+///                                        ///
+//////////////////////////////////////////////
+
+using System;
 using UnityEngine;
 
 [Serializable]

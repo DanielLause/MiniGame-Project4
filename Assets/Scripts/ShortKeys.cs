@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿//////////////////////////////////////////////
+///                                        ///
+///         Last Day - Source Code         ///
+///                                        ///
+///    Lead Programmer   Second Programmer ///
+///      Daniel Lause       Julian Hopp    ///
+///                                        ///
+//////////////////////////////////////////////
+
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ShortKeys : MonoBehaviour

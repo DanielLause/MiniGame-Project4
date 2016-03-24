@@ -1,6 +1,14 @@
-﻿using UnityEngine;
+﻿//////////////////////////////////////////////
+///                                        ///
+///         Last Day - Source Code         ///
+///                                        ///
+///    Lead Programmer   Second Programmer ///
+///      Daniel Lause       Julian Hopp    ///
+///                                        ///
+//////////////////////////////////////////////
+
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class ButtonBehaviours : MonoBehaviour
 {
@@ -10,7 +18,6 @@ public class ButtonBehaviours : MonoBehaviour
     private GameObject player;
     private GameTime gameTime;
     private GameObject globalScripts;
-
 
     [Tooltip("Makes the Mouse Cursor invisible if box is checked.")]
     public bool CursorIsVisible = false;
@@ -95,6 +102,7 @@ public class ButtonBehaviours : MonoBehaviour
     {
         Application.Quit();
     }
+
     // Tutorial
     public void OnClick_Tutorial()
     {
