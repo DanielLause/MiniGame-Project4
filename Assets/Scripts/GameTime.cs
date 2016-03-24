@@ -1,10 +1,11 @@
-﻿///////////////////////////////////////////
-///                                     ///
-///       Last Day - Source Code        ///
-///                  by                 ///
-///       Daniel Lause & Julian Hopp    ///
-///                                     ///
-///////////////////////////////////////////
+﻿//////////////////////////////////////////////
+///                                        ///
+///         Last Day - Source Code         ///
+///                                        ///
+///    Lead Programmer   Second Programmer ///
+///      Daniel Lause       Julian Hopp    ///
+///                                        ///
+//////////////////////////////////////////////
 
 using UnityEngine;
 using System.Collections;

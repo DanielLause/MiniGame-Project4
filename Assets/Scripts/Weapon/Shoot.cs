@@ -1,9 +1,20 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////
+///                                        ///
+///         Last Day - Source Code         ///
+///                                        ///
+///    Lead Programmer   Second Programmer ///
+///      Daniel Lause       Julian Hopp    ///
+///                                        ///
+//////////////////////////////////////////////
+
+using System.Collections;
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
     //public GameObject BulletHostPrefab;
+    [Range(0, 360)]
+    public float WeaponAngleSpeed = 100;
     public GameObject BulletTargetPrefab;
     public Transform BulletSpawn;
     public DroneMovement DroneMovementScript;
@@ -48,7 +59,7 @@ public class Shoot : MonoBehaviour
         droneTarget();
         //CooldownWeapon();
         bulletSpawn();
-        transform.LookAt(LookAtCrosshairScript.CrosshairTarget);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation((LookAtCrosshairScript.CrosshairTarget - transform.position).normalized), Time.deltaTime * WeaponAngleSpeed);
     }
     private void FixedUpdate()
     {

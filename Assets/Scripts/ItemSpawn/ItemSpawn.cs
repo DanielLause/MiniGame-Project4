@@ -1,4 +1,13 @@
-﻿using System.Collections.Generic;
+﻿//////////////////////////////////////////////
+///                                        ///
+///         Last Day - Source Code         ///
+///                                        ///
+///    Lead Programmer   Second Programmer ///
+///      Daniel Lause       Julian Hopp    ///
+///                                        ///
+//////////////////////////////////////////////
+
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemSpawn : MonoBehaviour
