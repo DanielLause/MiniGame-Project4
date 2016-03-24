@@ -118,16 +118,19 @@ public class Spawner : MonoBehaviour
 
     void spawn()
     {
-        if (OtherSpawnPoints.Length > 0)
+        if (gameTime.PlayTime == 1)
         {
-            for (int i = 0; i < OtherSpawnPoints.Length; i++)
+            if (OtherSpawnPoints.Length > 0)
             {
-                currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], OtherSpawnPoints[i].position, Quaternion.identity);
+                for (int i = 0; i < OtherSpawnPoints.Length; i++)
+                {
+                    currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], OtherSpawnPoints[i].position, Quaternion.identity);
+                }
             }
+            currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], transform.position, Quaternion.identity);
+            currentEnemy.transform.SetParent(enemys.transform);
+            StartCoroutine(SpawnDelay(setDelay()));
         }
-        currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], transform.position, Quaternion.identity);
-        currentEnemy.transform.SetParent(enemys.transform);
-        StartCoroutine(SpawnDelay(setDelay()));
     }
 
     IEnumerator SpawnDelay(float delay)
