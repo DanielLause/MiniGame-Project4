@@ -10,16 +10,31 @@
 using UnityEngine;
 using System.Collections;
 using System.Linq;
+using System.Collections.Generic;
 
 public class ObstacleSpawn : MonoBehaviour {
 
     private Transform[] obstacals;
+    private List<Transform> tempObstacals;
 
 	void Awake () {
 
         obstacals = transform.Cast<Transform>().ToArray();
-        if (obstacals.Length > 1)
-                obstacals[Random.Range(0, obstacals.Length)].gameObject.SetActive(false);
+        tempObstacals = new List<Transform>();
+        foreach (var item in obstacals)
+        {
+            tempObstacals.Add(item);
+        }
+        if (tempObstacals.Count > 0)
+        {
+
+        for (int i = 0; i < tempObstacals.Count+1; i++)
+        {
+                int k = Random.Range(0, tempObstacals.Count);
+                tempObstacals[k].gameObject.SetActive(true);
+                tempObstacals.Remove(tempObstacals[k]);
+        }
+        }
 
     }
 	
