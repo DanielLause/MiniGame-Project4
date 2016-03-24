@@ -36,20 +36,19 @@ public class ShadowBehavior : MonoBehaviour
     {
         if (!GetComponent<Health>().isDead)
         {
+            Physics.Raycast(transform.position, sun.forward * -1, out hit);
 
-        Physics.Raycast(transform.position, sun.forward*-1, out hit);
-
-        if (hit.transform == null )
-        {
-            myAgent.speed -= (oldMoveSpeed / 100 * moveSpeedReduce);
-            InShadow = false;
-            return;
-        }
-        else
-        {
-            InShadow = true;
-            myAgent.speed = oldMoveSpeed;
-        }
+            if (hit.transform == null)
+            {
+                myAgent.speed -= (oldMoveSpeed / 100 * moveSpeedReduce);
+                InShadow = false;
+                return;
+            }
+            else
+            {
+                InShadow = true;
+                myAgent.speed = oldMoveSpeed;
+            }
         }
     }
 }
