@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////
+///                                        ///
+///         Last Day - Source Code         ///
+///                                        ///
+///    Lead Programmer   Second Programmer ///
+///      Daniel Lause       Julian Hopp    ///
+///                                        ///
+//////////////////////////////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
