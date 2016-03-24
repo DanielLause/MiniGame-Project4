@@ -36,35 +36,51 @@ public class Spawner : MonoBehaviour
 
     private GameObject currentEnemy;
     private GameObject enemys;
+    private GameTime gameTime;
+    private bool paused;
 
     void Awake()
     {
-         enemys = new GameObject(transform.name + "_enemys");
+        gameTime = GameObject.Find("GlobalScripts").GetComponent<GameTime>();
+        enemys = new GameObject(transform.name + "_enemys");
         enemys.transform.SetParent(transform);
     }
 
     void Update()
     {
-        checkDefinitelySpawn();
-
-        if (StartWithoutDistance && !StartWithDistance)
+        if (gameTime.PlayTime == 0)
         {
-            StartWithDistance = false;
-            StartWithoutDistance = false;
-            SpawnActive = true;
-            spawn();
+            paused = true;
         }
-        else if (StartWithDistance && !StartWithoutDistance)
+        else
         {
-            StartWithoutDistance = false;
-            if (playerInDistance() && !SpawnActive)
+            if (paused)
             {
+                paused = false;
+                StartCoroutine(SpawnDelay(setDelay()));
+            }
+
+            checkDefinitelySpawn();
+
+            if (StartWithoutDistance && !StartWithDistance)
+            {
+                StartWithDistance = false;
+                StartWithoutDistance = false;
                 SpawnActive = true;
                 spawn();
             }
-            if (!playerInDistance() && SpawnActive)
+            else if (StartWithDistance && !StartWithoutDistance)
             {
-                SpawnActive = false;
+                StartWithoutDistance = false;
+                if (playerInDistance() && !SpawnActive)
+                {
+                    SpawnActive = true;
+                    spawn();
+                }
+                if (!playerInDistance() && SpawnActive)
+                {
+                    SpawnActive = false;
+                }
             }
         }
     }
@@ -84,9 +100,8 @@ public class Spawner : MonoBehaviour
         {
             currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], transform.position, Quaternion.identity);
             currentEnemy.transform.SetParent(enemys.transform);
-            //SpawnActive = false;
             DefinitelySpawn = false;
-            if (OtherSpawnPoints.Length >0)
+            if (OtherSpawnPoints.Length > 0)
             {
                 for (int i = 0; i < OtherSpawnPoints.Length; i++)
                 {
@@ -103,22 +118,7 @@ public class Spawner : MonoBehaviour
 
     void spawn()
     {
-        if (OtherSpawnPoints.Length > 0)
-        {
-            for (int i = 0; i < OtherSpawnPoints.Length; i++)
-            {
-                currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], OtherSpawnPoints[i].position, Quaternion.identity);
-            }
-        }
-        currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], transform.position, Quaternion.identity);
-        currentEnemy.transform.SetParent(enemys.transform);
-        StartCoroutine(SpawnDelay(setDelay()));
-    }
-
-    IEnumerator SpawnDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        if (SpawnActive)
+        if (gameTime.PlayTime == 1)
         {
             if (OtherSpawnPoints.Length > 0)
             {
@@ -130,6 +130,27 @@ public class Spawner : MonoBehaviour
             currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], transform.position, Quaternion.identity);
             currentEnemy.transform.SetParent(enemys.transform);
             StartCoroutine(SpawnDelay(setDelay()));
+        }
+    }
+
+    IEnumerator SpawnDelay(float delay)
+    {
+        if (gameTime.PlayTime == 1)
+        {
+            yield return new WaitForSeconds(delay);
+            if (SpawnActive)
+            {
+                if (OtherSpawnPoints.Length > 0)
+                {
+                    for (int i = 0; i < OtherSpawnPoints.Length; i++)
+                    {
+                        currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], OtherSpawnPoints[i].position, Quaternion.identity);
+                    }
+                }
+                currentEnemy = (GameObject)Instantiate(EnemyPrefabs[0], transform.position, Quaternion.identity);
+                currentEnemy.transform.SetParent(enemys.transform);
+                StartCoroutine(SpawnDelay(setDelay()));
+            }
         }
     }
 }
